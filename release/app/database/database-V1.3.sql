@@ -184,6 +184,7 @@ CREATE TABLE IF NOT EXISTS pedidos(
 						 -- Pago:5, Cancelado:6
 	origem INT default null, -- Web:1, APP:2,
 	observacoes TEXT default null,
+	status_notificacao INT default 1,
 	FOREIGN KEY(cod_cliente) REFERENCES clientes(cod)
 );
 

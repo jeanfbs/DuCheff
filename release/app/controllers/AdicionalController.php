@@ -128,7 +128,6 @@ class AdicionalController extends BaseController{
 	{
 
 		$codigo = Input::get('codigo');
-
 		$join = AdicionaisModel::where('adicionais.cod',$codigo)
 		->get();
 		return json_encode($join);

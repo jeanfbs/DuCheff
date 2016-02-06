@@ -49,7 +49,13 @@ $("#salvar").on('click', function(event) {
         url : pt_br.absolute_url+"/panel-control/bebidas/cadastro",
         enctype: 'multipart/form-data',
         data : dados,
-        processData:false
+        processData:false,
+        beforeSend: function() {
+         $('#ajaxLoading').fadeIn(350);
+     	},
+        complete: function() {
+         $('#ajaxLoading').fadeOut(350);
+     }
     }).done(function(res){
     	
     	if(parseInt(res,10) == 1)

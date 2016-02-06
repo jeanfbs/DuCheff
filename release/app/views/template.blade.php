@@ -4,19 +4,49 @@
     <meta charset="utf-8">
     
     <title>@yield('title')</title>
-    <meta name="description" content="Sistem de Gestão e Controle de rebanho bovino">
-    <meta name="author" content="TechMob">
+    <meta name="description" content="Sistem de Gestão e Controle de Pedidos">
+    <meta name="author" content="Jean Fabricio">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="{{url('favicon.ico')}}"/>
     <link href="{{url('plugins/bootstrap/bootstrap.css')}}" rel="stylesheet">
     <link href="{{url('plugins/jquery-ui/jquery-ui.min.css')}}" rel="stylesheet">
     <link href="{{url('css/font-awesome.min.css')}}" rel="stylesheet">
     
     <link href="{{url('css/style.css')}}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{url('css/alertas.css')}}">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
         <script src="http://getbootstrap.com/docs-assets/js/html5shiv.js"></script>
         <script src="http://getbootstrap.com/docs-assets/js/respond.min.js"></script>
     <![endif]-->
+    <style type="text/css" media="screen">
+      .loadajax
+     {
+
+      top:0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      z-index: 10000000;
+      background-color: rgba(255,255,255,0.6767);
+      display: none;
+
+     }
+     .loadajax img
+     {
+        margin: 10% auto;
+        
+     }
+     .loadajax h2
+     {
+      position: absolute;
+       top:0;
+       left: 0;
+       margin: 27% 45%;
+        
+     }
+    </style>
 
     <!-- Scripts -->
 
@@ -30,12 +60,17 @@
     <script>
     $(document).ready(function(){
 
+
       $(document).tooltip({selector:'*[data-toggle="tooltip"]'});
     });
     </script> 
     <script src="{{url('js/devoops.js')}}"></script>
   </head>
 <body>
+<div class="loadajax" id="ajaxLoading">
+  <img class='img-responsive' alt="Loading..." src="{{url('img/loading.gif')}}"/>
+  <h2>Aguarde...</h2>
+</div>
 <!--Start Header-->
 <div id="screensaver">
   <canvas id="canvas"></canvas>
@@ -185,7 +220,18 @@
     </div>
     <!--Start Content-->
     <div id="content" class="col-xs-12 col-sm-10">
-      
+      <!-- ALERTA DE MENSAGEM -->
+      <!-- Alert favor seguir esse padrao e importar a folha de estilo -->
+      <!-- 
+        * Abaixo esta a caixa de alert que tras as mensagens de validação tanto
+        * do jquery quanto do php por tras do servidor, se a variavel $msg existir
+        * então a mensagem e passada ao atributo message pelo qual via jquery
+        * eu remonto dentro do paragrafo                                    -->
+      @if(Session::has('msg'))
+          <div class="panel-alert" id="msg" message="{{Session::get('msg')}}"></div>
+      @else
+      <div class="panel-alert" id="msg"></div>
+      @endif
       <div id="ajax-content">
         @yield('content')
       </div>
@@ -198,7 +244,7 @@
 @if(App::getLocale() == 'pt-br')
 <script src="{{url('js/locale/pt_br.js')}}"></script>
 @endif
-
+<script src="{{url('js/alertas.js')}}" type="text/javascript" charset="utf-8"></script>
 <script>
 $(document).ready(function(){
 

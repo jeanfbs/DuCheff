@@ -2,21 +2,7 @@
 
 @section('title')   {{trans('geral.titulo_clientes')}}    @stop
 @section('content')
-<link rel="stylesheet" type="text/css" href="{{url('css/alertas.css')}}">
 <link rel="stylesheet" type="text/css" href="{{url('css/file.css')}}">
-<!-- ALERTA DE MENSAGEM -->
-<!-- Alert favor seguir esse padrao e importar a folha de estilo -->
-<!-- 
-  * Abaixo esta a caixa de alert que tras as mensagens de validação tanto
-  * do jquery quanto do php por tras do servidor, se a variavel $msg existir
-  * então a mensagem e passada ao atributo message pelo qual via jquery
-  * eu remonto dentro do paragrafo                                    -->
-@if(Session::has('msg'))
-    <div class="panel-alert" id="msg" message="{{Session::get('msg')}}"></div>
-@else
-<div class="panel-alert" id="msg"></div>
-@endif
-<br>
 <!--Start Breadcrumb-->
 <div class="row">
 	<div id="breadcrumb" class="col-xs-12">
@@ -64,7 +50,6 @@
 
 <div style="height: 40px;"></div>
 <script src="{{url('plugins/bootstrapvalidator/bootstrapValidator.min.js')}}" type="text/javascript" charset="utf-8"></script>
-<script src="{{url('js/alertas.js')}}" type="text/javascript" charset="utf-8"></script>
 <script src="{{url('js/utilidades.js')}}" type="text/javascript" charset="utf-8"></script>
 <script>
 $(document).ready(function() {

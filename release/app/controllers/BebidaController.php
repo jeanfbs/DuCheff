@@ -25,6 +25,7 @@ class BebidaController extends BaseController{
 	********************************************/
 	public function postCadastro()
 	{
+		sleep(5);
 		$dados = Input::all();
 		$file = Input::file('foto');
 		unset($dados["foto"]);
