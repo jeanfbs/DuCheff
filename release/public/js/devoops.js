@@ -28,99 +28,7 @@ function LoadCalendarScript(callback){
 		LoadFullCalendarScript();
 	}
 }
-//
-// Dynamically load  OpenStreetMap Plugin
-// homepage: http://openlayers.org
-//
-function LoadOpenLayersScript(callback){
-	if (!$.fn.OpenLayers){
-		$.getScript('http://www.openlayers.org/api/OpenLayers.js', callback);
-	}
-	else {
-		if (callback && typeof(callback) === "function") {
-			callback();
-		}
-	}
-}
-//
-//  Dynamically load  jQuery Timepicker plugin
-//  homepage: http://trentrichardson.com/examples/timepicker/
-//
-function LoadTimePickerScript(callback){
-	if (!$.fn.timepicker){
-		$.getScript('plugins/jquery-ui-timepicker-addon/jquery-ui-timepicker-addon.min.js', callback);
-	}
-	else {
-		if (callback && typeof(callback) === "function") {
-			callback();
-		}
-	}
-}
-//
-//  Dynamically load Bootstrap Validator Plugin
-//  homepage: https://github.com/nghuuphuoc/bootstrapvalidator
-//
-function LoadBootstrapValidatorScript(callback){
-	if (!$.fn.bootstrapValidator){
-		$.getScript('plugins/bootstrapvalidator/bootstrapValidator.min.js', callback);
-	}
-	else {
-		if (callback && typeof(callback) === "function") {
-			callback();
-		}
-	}
-}
-//
-//  Dynamically load jQuery Select2 plugin
-//  homepage: https://github.com/ivaynberg/select2  v3.4.5  license - GPL2
-//
-function LoadSelect2Script(callback){
-	if (!$.fn.select2){
-		$.getScript('plugins/select2/select2.min.js', callback);
-	}
-	else {
-		if (callback && typeof(callback) === "function") {
-			callback();
-		}
-	}
-}
-//
-//  Dynamically load DataTables plugin
-//  homepage: http://datatables.net v1.9.4 license - GPL or BSD
-//
-function LoadDataTablesScripts(callback){
-	function LoadDatatables(){
-		$.getScript('plugins/datatables/jquery.dataTables.js', function(){
-			$.getScript('plugins/datatables/ZeroClipboard.js', function(){
-				$.getScript('plugins/datatables/TableTools.js', function(){
-					$.getScript('plugins/datatables/dataTables.bootstrap.js', callback);
-				});
-			});
-		});
-	}
-	if (!$.fn.dataTables){
-		LoadDatatables();
-	}
-	else {
-		if (callback && typeof(callback) === "function") {
-			callback();
-		}
-	}
-}
-//
-//  Dynamically load Widen FineUploader
-//  homepage: https://github.com/Widen/fine-uploader  v5.0.1 license - GPL3
-//
-function LoadFineUploader(callback){
-	if (!$.fn.fineuploader){
-		$.getScript('plugins/fineuploader/jquery.fineuploader-5.0.1.min.js', callback);
-	}
-	else {
-		if (callback && typeof(callback) === "function") {
-			callback();
-		}
-	}
-}
+
 //
 //  Dynamically load xCharts plugin
 //  homepage: http://tenxer.github.io/xcharts/ v0.3.0 license - MIT
@@ -193,20 +101,7 @@ function LoadMorrisScripts(callback){
 		LoadMorrisScript();
 	}
 }
-//
-//  Dynamically load Fancybox 2 plugin
-//  homepage: http://fancyapps.com/fancybox/ v2.1.5 License - MIT
-//
-function LoadFancyboxScript(callback){
-	if (!$.fn.fancybox){
-		$.getScript('plugins/fancybox/jquery.fancybox.js', callback);
-	}
-	else {
-		if (callback && typeof(callback) === "function") {
-			callback();
-		}
-	}
-}
+
 //
 //  Dynamically load jQuery-Knob plugin
 //  homepage: http://anthonyterrien.com/knob/  v1.2.5 License- MIT or GPL
@@ -221,44 +116,11 @@ function LoadKnobScripts(callback){
 		}
 	}
 }
-//
-//  Dynamically load Sparkline plugin
-//  homepage: http://omnipotent.net/jquery.sparkline v2.1.2  License - BSD
-//
-function LoadSparkLineScript(callback){
-	if(!$.fn.sparkline){
-		$.getScript('plugins/sparkline/jquery.sparkline.min.js', callback);
-	}
-	else {
-		if (callback && typeof(callback) === "function") {
-			callback();
-		}
-	}
-}
+
 /*-------------------------------------------
 	Main scripts used by theme
 ---------------------------------------------*/
-//
-//  Function for load content from url and put in $('.ajax-content') block
-//
-function LoadAjaxContent(url){
-	$('.preloader').show();
-	
-	$.ajax({
-		mimeType: 'text/html; charset=utf-8', // ! Need set mimeType only when run from local file
-		url: url,
-		type: 'GET',
-		success: function(data) {
-			$('#ajax-content').html(data);
-			$('.preloader').hide();
-		},
-		error: function (jqXHR, textStatus, errorThrown) {
-			alert(errorThrown);
-		},
-		dataType: "html",
-		async: false
-	});
-}
+
 //
 //  Function maked all .box selector is draggable, to disable for concrete element add class .no-drop
 //
@@ -310,98 +172,7 @@ jQuery.fn.swap = function(b){
 	t.parentNode.removeChild(t);
 	return this;
 };
-//
-//  Screensaver function
-//  used on locked screen, and write content to element with id - canvas
-//
-function ScreenSaver(){
-	var canvas = document.getElementById("canvas");
-	var ctx = canvas.getContext("2d");
-	// Size of canvas set to fullscreen of browser
-	var W = window.innerWidth;
-	var H = window.innerHeight;
-	canvas.width = W;
-	canvas.height = H;
-	// Create array of particles for screensaver
-	var particles = [];
-	for (var i = 0; i < 25; i++) {
-		particles.push(new Particle());
-	}
-	function Particle(){
-		// location on the canvas
-		this.location = {x: Math.random()*W, y: Math.random()*H};
-		// radius - lets make this 0
-		this.radius = 0;
-		// speed
-		this.speed = 3;
-		// random angle in degrees range = 0 to 360
-		this.angle = Math.random()*360;
-		// colors
-		var r = Math.round(Math.random()*255);
-		var g = Math.round(Math.random()*255);
-		var b = Math.round(Math.random()*255);
-		var a = Math.random();
-		this.rgba = "rgba("+r+", "+g+", "+b+", "+a+")";
-	}
-	// Draw the particles
-	function draw() {
-		// re-paint the BG
-		// Lets fill the canvas black
-		// reduce opacity of bg fill.
-		// blending time
-		ctx.globalCompositeOperation = "source-over";
-		ctx.fillStyle = "rgba(0, 0, 0, 0.02)";
-		ctx.fillRect(0, 0, W, H);
-		ctx.globalCompositeOperation = "lighter";
-		for(var i = 0; i < particles.length; i++){
-			var p = particles[i];
-			ctx.fillStyle = "white";
-			ctx.fillRect(p.location.x, p.location.y, p.radius, p.radius);
-			// Lets move the particles
-			// So we basically created a set of particles moving in random direction
-			// at the same speed
-			// Time to add ribbon effect
-			for(var n = 0; n < particles.length; n++){
-				var p2 = particles[n];
-				// calculating distance of particle with all other particles
-				var yd = p2.location.y - p.location.y;
-				var xd = p2.location.x - p.location.x;
-				var distance = Math.sqrt(xd*xd + yd*yd);
-				// draw a line between both particles if they are in 200px range
-				if(distance < 200){
-					ctx.beginPath();
-					ctx.lineWidth = 1;
-					ctx.moveTo(p.location.x, p.location.y);
-					ctx.lineTo(p2.location.x, p2.location.y);
-					ctx.strokeStyle = p.rgba;
-					ctx.stroke();
-					//The ribbons appear now.
-				}
-			}
-			// We are using simple vectors here
-			// New x = old x + speed * cos(angle)
-			p.location.x = p.location.x + p.speed*Math.cos(p.angle*Math.PI/180);
-			// New y = old y + speed * sin(angle)
-			p.location.y = p.location.y + p.speed*Math.sin(p.angle*Math.PI/180);
-			// You can read about vectors here:
-			// http://physics.about.com/od/mathematics/a/VectorMath.htm
-			if(p.location.x < 0) p.location.x = W;
-			if(p.location.x > W) p.location.x = 0;
-			if(p.location.y < 0) p.location.y = H;
-			if(p.location.y > H) p.location.y = 0;
-		}
-	}
-	setInterval(draw, 30);
-}
-//
-// Helper for draw Google Chart
-//
-function drawGoogleChart(chart_data, chart_options, element, chart_type) {
-	// Function for visualize Google Chart
-	var data = google.visualization.arrayToDataTable(chart_data);
-	var chart = new chart_type(document.getElementById(element));
-	chart.draw(data, chart_options);
-}
+
 //
 //  Function for Draw Knob Charts
 //
@@ -489,68 +260,7 @@ function DrawKnob(elem){
 			}
 		});
 }
-//
-// Create OpenLayers map with required options and return map as object
-//
-function drawMap(lon, lat, elem, layers) {
-	var LayersArray = [];
-	// Map initialization
-	var map = new OpenLayers.Map(elem);
-	// Add layers on map
-	map.addLayers(layers);
-	// WGS 1984 projection
-	var epsg4326 =  new OpenLayers.Projection("EPSG:4326");
-	//The map projection (Spherical Mercator)
-	var projectTo = map.getProjectionObject();
-	// Max zoom = 17
-	var zoom=10;
-	map.zoomToMaxExtent();
-	// Set longitude/latitude
-	var lonlat = new OpenLayers.LonLat(lon, lat);
-	map.setCenter(lonlat.transform(epsg4326, projectTo), zoom);
-	var layerGuest = new OpenLayers.Layer.Vector("You are here");
-	// Define markers as "features" of the vector layer:
-	var guestMarker = new OpenLayers.Feature.Vector(
-		new OpenLayers.Geometry.Point(lon, lat).transform(epsg4326, projectTo)
-	);
-	layerGuest.addFeatures(guestMarker);
-	LayersArray.push(layerGuest);
-	map.addLayers(LayersArray);
-	// If map layers > 1 then show checker
-	if (layers.length > 1){
-		map.addControl(new OpenLayers.Control.LayerSwitcher({'ascending':true}));
-	}
-	// Link to current position
-	map.addControl(new OpenLayers.Control.Permalink());
-	// Show current mouse coords
-	map.addControl(new OpenLayers.Control.MousePosition({ displayProjection: epsg4326 }));
-	return map
-}
-//
-//  Function for create 2 dates in human-readable format (with leading zero)
-//
-function PrettyDates(){
-	var currDate = new Date();
-	var year = currDate.getFullYear();
-	var month = currDate.getMonth() + 1;
-	var startmonth = 1;
-	if (month > 3){
-		startmonth = month -2;
-	}
-	if (startmonth <=9){
-		startmonth = '0'+startmonth;
-	}
-	if (month <= 9) {
-		month = '0'+month;
-	}
-	var day= currDate.getDate();
-	if (day <= 9) {
-		day = '0'+day;
-	}
-	var startdate = year +'-'+ startmonth +'-01';
-	var enddate = year +'-'+ month +'-'+ day;
-	return [startdate, enddate];
-}
+
 //
 //  Function set min-height of window (required for this theme)
 //
@@ -581,178 +291,9 @@ function DashboardTabChecker(){
 		$(this).closest('li').addClass('active');
 	});
 }
-//
-// Helper for run TinyMCE editor with textarea's
-//
-function TinyMCEStart(elem, mode){
-	var plugins = [];
-	if (mode == 'extreme'){
-		plugins = [ "advlist anchor autolink autoresize autosave bbcode charmap code contextmenu directionality ",
-			"emoticons fullpage fullscreen hr image insertdatetime layer legacyoutput",
-			"link lists media nonbreaking noneditable pagebreak paste preview print save searchreplace",
-			"tabfocus table template textcolor visualblocks visualchars wordcount"]
-	}
-	tinymce.init({selector: elem,
-		theme: "modern",
-		plugins: plugins,
-		//content_css: "css/style.css",
-		toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons",
-		style_formats: [
-			{title: 'Header 2', block: 'h2', classes: 'page-header'},
-			{title: 'Header 3', block: 'h3', classes: 'page-header'},
-			{title: 'Header 4', block: 'h4', classes: 'page-header'},
-			{title: 'Header 5', block: 'h5', classes: 'page-header'},
-			{title: 'Header 6', block: 'h6', classes: 'page-header'},
-			{title: 'Bold text', inline: 'b'},
-			{title: 'Red text', inline: 'span', styles: {color: '#ff0000'}},
-			{title: 'Red header', block: 'h1', styles: {color: '#ff0000'}},
-			{title: 'Example 1', inline: 'span', classes: 'example1'},
-			{title: 'Example 2', inline: 'span', classes: 'example2'},
-			{title: 'Table styles'},
-			{title: 'Table row 1', selector: 'tr', classes: 'tablerow1'}
-		]
-	});
-}
-//
-// Helper for draw Sparkline plots on Dashboard page
-//
-function SparkLineDrawBarGraph(elem, arr, color){
-	if (color) {
-		var stacked_color = color;
-	}
-	else {
-		stacked_color = '#6AA6D6'
-	}
-	elem.sparkline(arr, { type: 'bar', barWidth: 7, highlightColor: '#000', barSpacing: 2, height: 40, stackedBarColor: stacked_color});
-}
-//
-//  Helper for open ModalBox with requested header, content and bottom
-//
-//
-function OpenModalBox(header, inner, bottom){
-	var modalbox = $('#modalbox');
-	modalbox.find('.modal-header-name span').html(header);
-	modalbox.find('.devoops-modal-inner').html(inner);
-	modalbox.find('.devoops-modal-bottom').html(bottom);
-	modalbox.fadeIn('fast');
-	$('body').addClass("body-expanded");
-}
-//
-//  Close modalbox
-//
-//
-function CloseModalBox(){
-	var modalbox = $('#modalbox');
-	modalbox.fadeOut('fast', function(){
-		modalbox.find('.modal-header-name span').children().remove();
-		modalbox.find('.devoops-modal-inner').children().remove();
-		modalbox.find('.devoops-modal-bottom').children().remove();
-		$('body').removeClass("body-expanded");
-	});
-}
-//
-//  Beauty tables plugin (navigation in tables with inputs in cell)
-//  Created by DevOOPS.
-//
-(function( $ ){
-	$.fn.beautyTables = function() {
-		var table = this;
-		var string_fill = false;
-		this.on('keydown', function(event) {
-		var target = event.target;
-		var tr = $(target).closest("tr");
-		var col = $(target).closest("td");
-		if (target.tagName.toUpperCase() == 'INPUT'){
-			if (event.shiftKey === true){
-				switch(event.keyCode) {
-					case 37: // left arrow
-						col.prev().children("input[type=text]").focus();
-						break;
-					case 39: // right arrow
-						col.next().children("input[type=text]").focus();
-						break;
-					case 40: // down arrow
-						if (string_fill==false){
-							tr.next().find('td:eq('+col.index()+') input[type=text]').focus();
-						}
-						break;
-					case 38: // up arrow
-						if (string_fill==false){
-							tr.prev().find('td:eq('+col.index()+') input[type=text]').focus();
-						}
-						break;
-				}
-			}
-			if (event.ctrlKey === true){
-				switch(event.keyCode) {
-					case 37: // left arrow
-						tr.find('td:eq(1)').find("input[type=text]").focus();
-						break;
-					case 39: // right arrow
-						tr.find('td:last-child').find("input[type=text]").focus();
-						break;
-				case 40: // down arrow
-					if (string_fill==false){
-						table.find('tr:last-child td:eq('+col.index()+') input[type=text]').focus();
-					}
-					break;
-				case 38: // up arrow
-					if (string_fill==false){
-						table.find('tr:eq(1) td:eq('+col.index()+') input[type=text]').focus();
-					}
-						break;
-				}
-			}
-			if (event.keyCode == 13 || event.keyCode == 9 ) {
-				event.preventDefault();
-				col.next().find("input[type=text]").focus();
-			}
-			if (string_fill==false){
-				if (event.keyCode == 34) {
-					event.preventDefault();
-					table.find('tr:last-child td:last-child').find("input[type=text]").focus();}
-				if (event.keyCode == 33) {
-					event.preventDefault();
-					table.find('tr:eq(1) td:eq(1)').find("input[type=text]").focus();}
-			}
-		}
-		});
-		table.find("input[type=text]").each(function(){
-			$(this).on('blur', function(event){
-			var target = event.target;
-			var col = $(target).parents("td");
-			if(table.find("input[name=string-fill]").prop("checked")==true) {
-				col.nextAll().find("input[type=text]").each(function() {
-					$(this).val($(target).val());
-				});
-			}
-		});
-	})
-};
-})( jQuery );
-//
-// Beauty Hover Plugin (backlight row and col when cell in mouseover)
-//
-//
-(function( $ ){
-	$.fn.beautyHover = function() {
-		var table = this;
-		table.on('mouseover','td', function() {
-			var idx = $(this).index();
-			var rows = $(this).closest('table').find('tr');
-			rows.each(function(){
-				$(this).find('td:eq('+idx+')').addClass('beauty-hover');
-			});
-		})
-		.on('mouseleave','td', function(e) {
-			var idx = $(this).index();
-			var rows = $(this).closest('table').find('tr');
-			rows.each(function(){
-				$(this).find('td:eq('+idx+')').removeClass('beauty-hover');
-			});
-		});
-	};
-})( jQuery );
+
+
+
 //
 //  Function convert values of inputs in table to JSON data
 //
@@ -1094,172 +635,7 @@ function MorrisChart5(){
 		hideHover: 'auto'
 	});
 }
-/*-------------------------------------------
-	Demo graphs for Google Chart page (charts_google.html)
----------------------------------------------*/
-//
-// One function for create all graphs on Google Chart page
-//
-function DrawAllCharts(){
-	//  Chart 1
-	var chart1_data = [
-		['Smartphones', 'PC', 'Notebooks', 'Monitors','Routers', 'Switches' ],
-		['01.01.2014',  1234, 2342, 344, 232,131],
-		['02.01.2014',  1254, 232, 314, 232, 331],
-		['03.01.2014',  2234, 342, 298, 232, 665],
-		['04.01.2014',  2234, 42, 559, 232, 321],
-		['05.01.2014',  1999, 82, 116, 232, 334],
-		['06.01.2014',  1634, 834, 884, 232, 191],
-		['07.01.2014',  321, 342, 383, 232, 556],
-		['08.01.2014',  845, 112, 499, 232, 731]
-	];
-	var chart1_options = {
-		title: 'Sales of company',
-		hAxis: {title: 'Date', titleTextStyle: {color: 'red'}},
-		backgroundColor: '#fcfcfc',
-		vAxis: {title: 'Quantity', titleTextStyle: {color: 'blue'}}
-	};
-	var chart1_element = 'google-chart-1';
-	var chart1_type = google.visualization.ColumnChart;
-	drawGoogleChart(chart1_data, chart1_options, chart1_element, chart1_type);
-	//  Chart 2
-	var chart2_data = [
-		['Height', 'Width'],
-		['Samsung',  74.5],
-		['Apple',  31.24],
-		['LG',  12.10],
-		['Huawei',  11.14],
-		['Sony',  8.3],
-		['Nokia',  7.4],
-		['Blackberry',  6.8],
-		['HTC',  6.63],
-		['Motorola',  3.5],
-		['Other',  43.15]
-	];
-	var chart2_options = {
-		title: 'Smartphone marketshare 2Q 2013',
-		backgroundColor: '#fcfcfc'
-	};
-	var chart2_element = 'google-chart-2';
-	var chart2_type = google.visualization.PieChart;
-	drawGoogleChart(chart2_data, chart2_options, chart2_element, chart2_type);
-	//  Chart 3
-	var chart3_data = [
-		['Age', 'Weight'],
-		[ 8, 12],
-		[ 4, 5.5],
-		[ 11, 14],
-		[ 4, 5],
-		[ 3, 3.5],
-		[ 6.5, 7]
-	];
-	var chart3_options = {
-		title: 'Age vs. Weight comparison',
-		hAxis: {title: 'Age', minValue: 0, maxValue: 15},
-		vAxis: {title: 'Weight', minValue: 0, maxValue: 15},
-		legend: 'none',
-		backgroundColor: '#fcfcfc'
-	};
-	var chart3_element = 'google-chart-3';
-	var chart3_type = google.visualization.ScatterChart;
-	drawGoogleChart(chart3_data, chart3_options, chart3_element, chart3_type);
-	//  Chart 4
-	var chart4_data = [
-		['ID', 'Life Expectancy', 'Fertility Rate', 'Region',     'Population'],
-		['CAN',    80.66,              1.67,      'North America',  33739900],
-		['DEU',    79.84,              1.36,      'Europe',         81902307],
-		['DNK',    78.6,               1.84,      'Europe',         5523095],
-		['EGY',    72.73,              2.78,      'Middle East',    79716203],
-		['GBR',    80.05,              2,         'Europe',         61801570],
-		['IRN',    72.49,              1.7,       'Middle East',    73137148],
-		['IRQ',    68.09,              4.77,      'Middle East',    31090763],
-		['ISR',    81.55,              2.96,      'Middle East',    7485600],
-		['RUS',    68.6,               1.54,      'Europe',         141850000],
-		['USA',    78.09,              2.05,      'North America',  307007000]
-	];
-	var chart4_options = {
-		title: 'Correlation between life expectancy, fertility rate and population of some world countries (2010)',
-		hAxis: {title: 'Life Expectancy'},
-		vAxis: {title: 'Fertility Rate'},
-		backgroundColor: '#fcfcfc',
-		bubble: {textStyle: {fontSize: 11}}
-	};
-	var chart4_element = 'google-chart-4';
-	var chart4_type = google.visualization.BubbleChart;
-	drawGoogleChart(chart4_data, chart4_options, chart4_element, chart4_type);
-	//  Chart 5
-	var chart5_data = [
-		['Country', 'Popularity'],
-		['Germany', 200],
-		['United States', 300],
-		['Brazil', 400],
-		['Canada', 500],
-		['France', 600],
-		['RU', 700]
-	];
-	var chart5_options = {
-		backgroundColor: '#fcfcfc',
-		enableRegionInteractivity: true
-	};
-	var chart5_element = 'google-chart-5';
-	var chart5_type = google.visualization.GeoChart;
-	drawGoogleChart(chart5_data, chart5_options, chart5_element, chart5_type);
-	//  Chart 6
-	var chart6_data = [
-	['Year', 'Sales', 'Expenses'],
-		['2004',  1000,      400],
-		['2005',  1170,      460],
-		['2006',  660,       1120],
-		['2007',  1030,      540],
-		['2008',  2080,      740],
-		['2009',  1949,      690],
-		['2010',  2334,      820]
-	];
-	var chart6_options = {
-		backgroundColor: '#fcfcfc',
-		title: 'Company Performance'
-	};
-	var chart6_element = 'google-chart-6';
-	var chart6_type = google.visualization.LineChart;
-	drawGoogleChart(chart6_data, chart6_options, chart6_element, chart6_type);
-	//  Chart 7
-	var chart7_data = [
-	['Task', 'Hours per Day'],
-		['Work',     11],
-		['Eat',      2],
-		['Commute',  2],
-		['Watch TV', 2],
-		['Sleep',    7]
-	];
-	var chart7_options = {
-		backgroundColor: '#fcfcfc',
-		title: 'My Daily Activities',
-		pieHole: 0.4
-	};
-	var chart7_element = 'google-chart-7';
-	var chart7_type = google.visualization.PieChart;
-	drawGoogleChart(chart7_data, chart7_options, chart7_element, chart7_type);
-	//  Chart 8
-	var chart8_data = [
-		['Generation', 'Descendants'],
-		[0, 1], [1, 33], [2, 269], [3, 2013]
-	];
-	var chart8_options = {
-		backgroundColor: '#fcfcfc',
-		title: 'Descendants by Generation',
-		hAxis: {title: 'Generation', minValue: 0, maxValue: 3},
-		vAxis: {title: 'Descendants', minValue: 0, maxValue: 2100},
-		trendlines: {
-			0: {
-				type: 'exponential',
-				visibleInLegend: true
-			}
-		}
-	};
-	var chart8_element = 'google-chart-8';
-	var chart8_type = google.visualization.ScatterChart;
-	drawGoogleChart(chart8_data, chart8_options, chart8_element, chart8_type);
-}
+
 /*-------------------------------------------
 	Demo graphs for xCharts page (charts_xcharts.html)
 ---------------------------------------------*/
@@ -1556,103 +932,11 @@ function DrawCoinDeskGoogleCharts(){
 	var google_type = google.visualization.LineChart;
 	drawGoogleChart(google_data, google_options, google_element, google_type);
 }
-/*-------------------------------------------
-	Scripts for DataTables page (tables_datatables.html)
----------------------------------------------*/
-//
-// Function for table, located in element with id = datatable-1
-//
-function TestTable1(){
-	$('#datatable-1').dataTable( {
-		"aaSorting": [[ 0, "asc" ]],
-		"sDom": "<'box-content'<'col-sm-6'f><'col-sm-6 text-right'l><'clearfix'>>rt<'box-content'<'col-sm-6'i><'col-sm-6 text-right'p><'clearfix'>>",
-		"sPaginationType": "bootstrap",
-		"oLanguage": {
-			"sSearch": "",
-			"sLengthMenu": '_MENU_'
-		}
-	});
-}
-//
-// Function for table, located in element with id = datatable-2
-//
-function TestTable2(){
-	var asInitVals = [];
-	var oTable = $('#datatable-2').dataTable( {
-		"aaSorting": [[ 0, "asc" ]],
-		"sDom": "<'box-content'<'col-sm-6'f><'col-sm-6 text-right'l><'clearfix'>>rt<'box-content'<'col-sm-6'i><'col-sm-6 text-right'p><'clearfix'>>",
-		"sPaginationType": "bootstrap",
-		"oLanguage": {
-			"sSearch": "",
-			"sLengthMenu": '_MENU_'
-		},
-		bAutoWidth: false
-	});
-	var header_inputs = $("#datatable-2 thead input");
-	header_inputs.on('keyup', function(){
-		/* Filter on the column (the index) of this element */
-		oTable.fnFilter( this.value, header_inputs.index(this) );
-	})
-	.on('focus', function(){
-		if ( this.className == "search_init" ){
-			this.className = "";
-			this.value = "";
-		}
-	})
-	.on('blur', function (i) {
-		if ( this.value == "" ){
-			this.className = "search_init";
-			this.value = asInitVals[header_inputs.index(this)];
-		}
-	});
-	header_inputs.each( function (i) {
-		asInitVals[i] = this.value;
-	});
-}
-//
-// Function for table, located in element with id = datatable-3
-//
-function TestTable3(){
-	$('#datatable-3').dataTable( {
-		"aaSorting": [[ 0, "asc" ]],
-		"sDom": "T<'box-content'<'col-sm-6'f><'col-sm-6 text-right'l><'clearfix'>>rt<'box-content'<'col-sm-6'i><'col-sm-6 text-right'p><'clearfix'>>",
-		"sPaginationType": "bootstrap",
-		"oLanguage": {
-			"sSearch": "",
-			"sLengthMenu": '_MENU_'
-		},
-		"oTableTools": {
-			"sSwfPath": "plugins/datatables/copy_csv_xls_pdf.swf",
-			"aButtons": [
-				"copy",
-				"print",
-				{
-					"sExtends":    "collection",
-					"sButtonText": 'Save <span class="caret" />',
-					"aButtons":    [ "csv", "xls", "pdf" ]
-				}
-			]
-		}
-	});
-}
+
 /*-------------------------------------------
 	Functions for Dashboard page (dashboard.html)
 ---------------------------------------------*/
-//
-// Helper for random change data (only test data for Sparkline plots)
-//
-function SmallChangeVal(val) {
-	var new_val = Math.floor(100*Math.random());
-	var plusOrMinus = Math.random() < 0.5 ? -1 : 1;
-	var result = val[0]+new_val*plusOrMinus;
-	if (parseInt(result) > 1000){
-		return [val[0] - new_val]
-	}
-	if (parseInt(result) < 0){
-		return [val[0] + new_val]
-	}
-	return [result];
-}
+
 //
 // Make array of random data
 //
@@ -1678,18 +962,11 @@ function RedrawKnob(elem){
 		}
 	});
 }
-//
-// Draw 3 Sparkline plot in Dashboard header
-//
-function SparklineLoop(){
-	SparkLineDrawBarGraph($('#sparkline-1'), sparkline_arr_1.map(SmallChangeVal));
-	SparkLineDrawBarGraph($('#sparkline-2'), sparkline_arr_2.map(SmallChangeVal), '#7BC5D3');
-	SparkLineDrawBarGraph($('#sparkline-3'), sparkline_arr_3.map(SmallChangeVal), '#B25050');
-}
+
 //
 // Draw Morris charts on Dashboard (panel- Statistics + 3 donut)
 //
-function MorrisDashboard(){
+function MorrisDashboard(){	
 	Morris.Line({
 		element: 'stat-graph',
 		data: [
@@ -1746,23 +1023,7 @@ function MorrisDashboard(){
 //
 // Draw SparkLine example Charts for Dashboard (table- Tickers)
 //
-function DrawSparklineDashboard(){
-	SparklineLoop();
-	setInterval(SparklineLoop, 1000);
-	var sparkline_clients = [[309],[223], [343], [652], [455], [18], [912],[15]];
-	$('.bar').each(function(){
-		$(this).sparkline(sparkline_clients.map(SmallChangeVal), {type: 'bar', barWidth: 5, highlightColor: '#000', barSpacing: 2, height: 30, stackedBarColor: '#6AA6D6'});
-	});
-	var sparkline_table = [ [1,341], [2,464], [4,564], [5,235], [6,335], [7,535], [8,642], [9,342], [10,765] ];
-	$('.td-graph').each(function(){
-		var arr = $.map( sparkline_table, function(val, index) {
-			return [[val[0], SmallChangeVal([val[1]])]];
-		});
-		$(this).sparkline( arr ,
-			{defaultPixelsPerValue: 10, minSpotColor: null, maxSpotColor: null, spotColor: null,
-			fillColor: false, lineWidth: 2, lineColor: '#5A8DB6'});
-		});
-}
+
 //
 // Draw Knob Charts for Dashboard (for servers)
 //
@@ -1776,30 +1037,7 @@ function DrawKnobDashboard(){
 		srv_monitoring_selectors.forEach(RedrawKnob);
 	}, 3000);
 }
-/*-------------------------------------------
-	Function for File upload page (form_file_uploader.html)
----------------------------------------------*/
-function FileUpload(){
-	$('#bootstrapped-fine-uploader').fineUploader({
-		template: 'qq-template-bootstrap',
-		classes: {
-			success: 'alert alert-success',
-			fail: 'alert alert-error'
-		},
-		thumbnails: {
-			placeholders: {
-				waitingPath: "assets/waiting-generic.png",
-				notAvailablePath: "assets/not_available-generic.png"
-			}
-		},
-		request: {
-			endpoint: 'server/handleUploads'
-		},
-		validation: {
-			allowedExtensions: ['jpeg', 'jpg', 'gif', 'png']
-		}
-	});
-}
+
 /*-------------------------------------------
 	Function for OpenStreetMap page (maps.html)
 ---------------------------------------------*/

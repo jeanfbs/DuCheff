@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 return array(
 
@@ -18,6 +18,7 @@ return array(
 	'button_cancelar' => 'Cancelar',
 	'button_salvar'   => 'Salvar',
 	'button_entrar'  => 'Entrar',
+	'button_rejeitar'  => 'Rejeitar',
 	'tab_cadastro'  => 'Cadastrar',
 	'tab_pesquisar'  => 'Pesquisar',
 	'tab_relatorio'  => 'Relatórios',
@@ -25,14 +26,13 @@ return array(
 	'tooltip_editar' => "Editar",
 	'tooltip_deletar' => "Deletar",
 	'breadcrumb_home' =>'Home',
-	'title_info'			  => 'Informações',
+	'title_info'	  => 'Informações',
 	'pesquisar' =>"Pesquisar",
 /*********************************************************************************/
 //  		 Labels Template
 	/* Nav Bar labels */
 	'hello'					=> 'Bem Vindo',
 	'menu_perfil' 			=> 'Perfil',
-	'menu_notif'     		=> 'Notificações',
 	'menu_suport'     		=> 'Suporte',
 	'menu_sair'				=> 'Sair',
 
@@ -73,6 +73,14 @@ return array(
 //  		 Labels DashBoard
 
 	'titulo_dash' => 'Dashboard',
+	'pedidos_dia' => 'Pedidos Diários',
+	'pedidos_mes' => 'Pedidos Mensais',
+	'prato_mais_pedido' => 'Mais pedido',
+	'ranked' => 'Clientes X Pedidos',
+	'col_cliente' => 'Cliente',
+	'col_pedidos' => 'Media Pedidos',
+	'col_prato' => 'Prato mais Pedido',
+	'col_ultimo_pedido' => 'Ultimo Pedido',
 	
 /*********************************************************************************/
 //  		 Labels Funcionários 	
@@ -209,9 +217,9 @@ return array(
 	'rs' => 'R$',
 	'valor_unit' => 'Valor Unitário',
 	'obs' => 'Observações',
+	'motivo' => 'Motivo',
 
 	// Pedidos em Abertos Pesquisa
-	'tab_pedidos_enviados' => 'Pedidos Enviados',
 	'status' => 'Status',
 	'origem' => 'Origem',
 	'status_enviado' => "Enviado",
@@ -219,12 +227,13 @@ return array(
 	'status_rejeitado' => "Rejeitado",
 	'status_pronto' => "Pronto",
 	'status_pago' => "Pago",
-	'status_editando' => "Editando",
+	'status_cancelado' => "Cancelado",
 	'org_web' => 'Web',
 	'org_app' => 'App',
 	'coluna_total' => 'Total',
 	'coluna_data' => 'Data',
 	'titulo_modal_pedido' => "Detalhes Pedido: ",
+	'titulo_modal_rejeitar' => "Rejeitar Pedido",
 	'button_aceitar'   => 'Aceitar',
 	'header_pedido_enviados' => 'Você poderá visualizar todos os pedidos enviados,'.
 							    ' podendo aceitar ou rejeitar algum deles.',
@@ -265,3 +274,4 @@ return array(
 
 
 );
+

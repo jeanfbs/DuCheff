@@ -84,9 +84,17 @@ var pt_br =
 	msg_erro_mesa: 'Por favor preencha o nº da mesa!',
 	msg_erro_itens: 'Por favor adicione no mínimo um prato em seu pedido!',
 	msg_erro_item_bebida_duplicado: 'Essa bebida ja foi adicionada!',
-	tooltip_aceitar:'Aceitar',
+	tooltip_concluir:'Concluir',
+	tooltip_pago:'Pago',
 	tooltip_rejeitar:'Rejeitar',
 	adicionais_prato_pedido:'Adicionais do Prato',
+	msg_pedido_aceito:'O pedido foi aceito!',
+	msg_pedido_concluido:'O pedido foi concluído!',
+	confirma_rejeicao:'Tem certeza que deseja rejeitar esse pedido?',
+	msg_pedido_rejetado:'O pedido foi rejeitado!',
+	msg_erro_conclusao:'Aceite o pedido antes de concluir!',
+	msg_erro_pagamento:'Só é possivel finalizar o pagamento de pedidos concluidos!',
+	msg_erro_motivo:'Informe o motivo da rejeição!',
 
 	// Estoque
 	msg_erro_qtd_entrada:'A quantidade de entrada é obrigatória!',
@@ -98,11 +106,7 @@ var pt_br =
 	format_field_unid: 'Unidade de Medida:',
 	format_field_obs: 'Observações:',
 	msg_erro_qtd_atual:'Não é permitido valores negativos no estoque!',
-	msg_pedido_aceito:'O pedido foi aceito!',
-	msg_pedido_concluido:'O pedido foi concluído!',
-	confirma_rejeicao:'Tem certeza que deseja rejeitar esse pedido?',
-	msg_pedido_rejetado:'O pedido foi rejeitado!',
-	msg_erro_conclusao:'Aceite o pedido antes de concluir!',
+	
 
 	
 	

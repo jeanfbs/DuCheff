@@ -13,52 +13,63 @@
 <!--End Breadcrumb-->
 <!--Start Dashboard 1-->
 <div id="dashboard-header" class="row">
-	<div class="col-xs-10 col-sm-2">
+	<div class="col-xs-3 col-sm-3">
 		<h3>{{strtoupper(Session::get('nome_user'))}}</h3>
 	</div>
-	<div class="col-xs-2 col-sm-1 col-sm-offset-1">
-		<div id="social" class="row">
-			<a href="#"><i class="fa fa-google-plus"></i></a>
-			<a href="#"><i class="fa fa-facebook"></i></a>
-			<a href="#"><i class="fa fa-twitter"></i></a>
-			<a href="#"><i class="fa fa-linkedin"></i></a>
-			<a href="#"><i class="fa fa-youtube"></i></a>
-		</div>
-	</div>
-	<div class="clearfix visible-xs"></div>
-	<div class="col-xs-12 col-sm-8 col-md-7 pull-right">
-		<div class="row">
-			<div class="col-xs-4">
-				<div class="sparkline-dashboard" id="sparkline-1"></div>
-				<div class="sparkline-dashboard-info">
-					<i class="fa fa-usd"></i>756.45M
-					<span class="txt-primary">EBITDA</span>
-				</div>
-			</div>
-			<div class="col-xs-4">
-				<div class="sparkline-dashboard" id="sparkline-2"></div>
-				<div class="sparkline-dashboard-info">
-					<i class="fa fa-usd"></i>245.12M
-					<span class="txt-info">OIBDA</span>
-				</div>
-			</div>
-			<div class="col-xs-4">
-				<div class="sparkline-dashboard" id="sparkline-3"></div>
-				<div class="sparkline-dashboard-info">
-					<i class="fa fa-usd"></i>107.83M
-					<span>REVENUE</span>
-				</div>
-			</div>
-		</div>
-	</div>
+	<div class="col-xs-3 col-md-3">
+        <div class="panel panel-green">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-paper-plane fa-3x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge"><h3>{{((isset($qtd_pdias)) ? $qtd_pdias:'0')}}</h3></div>
+                        <div>{{trans('geral.pedidos_dia')}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-3 col-md-3">
+        <div class="panel panel-yellow">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-paper-plane fa-3x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge"><h3>{{((isset($qtd_pmes)) ? $qtd_pmes:'0')}}</h3></div>
+                        <div>{{trans('geral.pedidos_mes')}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-3 col-md-3">
+        <div class="panel panel-red">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-2">
+                        <i class="fa fa-cutlery fa-3x"></i>
+                    </div>
+                    <div class="col-xs-10 text-right">
+                        <div class="huge"><b>{{((isset($ppp)) ? $ppp:'')}}</b></div>
+                        <div>{{trans('geral.prato_mais_pedido')}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
 <!--End Dashboard 1-->
 <!--Start Dashboard 2-->
 <div class="row-fluid">
 	<div id="dashboard_links" class="col-xs-12 col-sm-2 pull-right">
 		<ul class="nav nav-pills nav-stacked">
 			<li class="active"><a href="#" class="tab-link" id="overview">Overview</a></li>
-			<li><a href="#" class="tab-link" id="clients">Clients</a></li>
+			<li><a href="#" class="tab-link" id="clients">{{trans('geral.ranked')}}</a></li>
 			<li><a href="#" class="tab-link" id="graph">Statistics</a></li>
 			<li><a href="#" class="tab-link" id="servers">Servers</a></li>
 		</ul>
@@ -206,67 +217,20 @@
 		<div id="dashboard-clients" class="row" style="visibility: hidden; position: absolute;">
 			<div class="row one-list-message">
 				<div class="col-xs-1"><i class="fa fa-users"></i></div>
-				<div class="col-xs-2"><b>Country</b></div>
-				<div class="col-xs-2">Visitors</div>
-				<div class="col-xs-2">Page hits</div>
-				<div class="col-xs-2">Revenue</div>
-				<div class="col-xs-1">Activity</div>
-				<div class="col-xs-2">Date</div>
+				<div class="col-xs-4"><b>{{trans('geral.col_cliente')}}</b></div>
+				<div class="col-xs-2">{{trans('geral.col_pedidos')}}</div>
+				<div class="col-xs-2">{{trans('geral.col_ultimo_pedido')}}</div>
 			</div>
-			<div class="row one-list-message">
-				<div class="col-xs-1"><i class="fa fa-user"></i></div>
-				<div class="col-xs-2"><b>USA</b></div>
-				<div class="col-xs-2">109455</div>
-				<div class="col-xs-2">54322344</div>
-				<div class="col-xs-2"><i class="fa fa-usd"></i> 354563</div>
-				<div class="col-xs-1"><span class="bar"></span></div>
-				<div class="col-xs-2 message-date">12/31/13</div>
-			</div>
-			<div class="row one-list-message">
-				<div class="col-xs-1"><i class="fa fa-user"></i></div>
-				<div class="col-xs-2"><b>U.K.</b></div>
-				<div class="col-xs-2">86549</div>
-				<div class="col-xs-2">43242344</div>
-				<div class="col-xs-2"><i class="fa fa-usd"></i> 265563</div>
-				<div class="col-xs-1"><span class="bar"></span></div>
-				<div class="col-xs-2 message-date">12/25/13</div>
-			</div>
-			<div class="row one-list-message">
-				<div class="col-xs-1"><i class="fa fa-user"></i></div>
-				<div class="col-xs-2"><b>FRANCE</b></div>
-				<div class="col-xs-2">79399</div>
-				<div class="col-xs-2">45376844</div>
-				<div class="col-xs-2"><i class="fa fa-usd"></i> 309456</div>
-				<div class="col-xs-1"><span class="bar"></span></div>
-				<div class="col-xs-2 message-date">12/30/13</div>
-			</div>
-			<div class="row one-list-message">
-				<div class="col-xs-1"><i class="fa fa-user"></i></div>
-				<div class="col-xs-2"><b>GERMANY</b></div>
-				<div class="col-xs-2">94567</div>
-				<div class="col-xs-2">35322344</div>
-				<div class="col-xs-2"><i class="fa fa-usd"></i> 301040</div>
-				<div class="col-xs-1"><span class="bar"></span></div>
-				<div class="col-xs-2 message-date">12/26/13</div>
-			</div>
-			<div class="row one-list-message">
-				<div class="col-xs-1"><i class="fa fa-user"></i></div>
-				<div class="col-xs-2"><b>CANADA</b></div>
-				<div class="col-xs-2">89525</div>
-				<div class="col-xs-2">1342344</div>
-				<div class="col-xs-2"><i class="fa fa-usd"></i> 298764</div>
-				<div class="col-xs-1"><span class="bar"></span></div>
-				<div class="col-xs-2 message-date">12/30/13</div>
-			</div>
-			<div class="row one-list-message">
-				<div class="col-xs-1"><i class="fa fa-user"></i></div>
-				<div class="col-xs-2"><b>CHINA</b></div>
-				<div class="col-xs-2">120865</div>
-				<div class="col-xs-2">43522344</div>
-				<div class="col-xs-2"><i class="fa fa-usd"></i> 776563</div>
-				<div class="col-xs-1"><span class="bar"></span></div>
-				<div class="col-xs-2 message-date">12/29/13</div>
-			</div>
+			@if(isset($tclientes))
+				@foreach(@$tclientes as $tc)
+					<div class="row one-list-message">
+						<div class="col-xs-1"><i class="fa fa-user"></i></div>
+						<div class="col-xs-4"><b>{{$tc->nome}}</b></div>
+						<div class="col-xs-2">{{$tc->qtd_pedidos}}</div>
+						<div class="col-xs-2 message-date">{{$tc->ultimo_pedido}}</div>
+					</div>
+				@endforeach
+			@endif
 		</div>
 		<!--End Dashboard Tab 2-->
 		<!--Start Dashboard Tab 3-->
@@ -415,17 +379,14 @@
 <script src="{{url('plugins/raphael/raphael-min.js')}}" type="text/javascript" ></script>
 <script type="text/javascript">
 // Array for random data for Sparkline
-var sparkline_arr_1 = SparklineTestData();
 var sparkline_arr_2 = SparklineTestData();
 var sparkline_arr_3 = SparklineTestData();
 $(document).ready(function() {
 	// Make all JS-activity for dashboard
 	DashboardTabChecker();
 	
-	DrawSparklineDashboard();
 	MorrisDashboard();
-	// Make beauty hover in table
-	$("#ticker-table").beautyHover();
+	
 });
 </script>
 @stop

@@ -40,7 +40,7 @@
 				<div id="tabs">
 					<ul>
 						<li><a href="{{url('panel-control/pedidos/cadastro')}}">{{trans('geral.tab_cadastro')}}</a></li>
-						<li><a href="{{url('panel-control/pedidos/pedidosenviados')}}">{{trans('geral.tab_pedidos_enviados')}}</a></li>
+						<li><a href="{{url('panel-control/pedidos/pedidosenviados')}}">{{trans('geral.tab_pesquisar')}}</a></li>
 					</ul>
 					<div id="tabs-2">
 						

@@ -206,10 +206,22 @@ class PedidoController extends BaseController{
 			switch(intval($value["status"]))
 			{
 				case 1:
-					$value["status"] = Lang::get('geral.status_enviado');
+					$value["status"] = "<span cod_status=".intval($value["status"]).">".Lang::get('geral.status_enviado')."</span>";
 				break;
 				case 2:
-					$value["status"] = "<span class='text-primary'>".Lang::get('geral.status_aceito')."</span>";
+					$value["status"] = "<span class='text-primary' cod_status=".intval($value["status"]).">".Lang::get('geral.status_aceito')."</span>";
+				break;
+				case 3:
+					$value["status"] = "<span class='text-primary' cod_status=".intval($value["status"]).">".Lang::get('geral.status_rejeitado')."</span>";
+				break;
+				case 4:
+					$value["status"] = "<span class='text-primary' cod_status=".intval($value["status"]).">".Lang::get('geral.status_pronto')."</span>";
+				break;
+				case 5:
+					$value["status"] = "<span class='text-primary' cod_status=".intval($value["status"]).">".Lang::get('geral.status_pago')."</span>";
+				break;
+				case 6:
+					$value["status"] = "<span class='text-primary' cod_status=".intval($value["status"]).">".Lang::get('geral.status_cancelado')."</span>";
 				break;
 			}
 
@@ -221,8 +233,8 @@ class PedidoController extends BaseController{
 			{
 				$value["origem"] = '<i class="fa fa-mobile"></i> '.Lang::get('geral.org_app');
 			}
-
-			$value["valor_total"] = Lang::get('geral.rs')." ".$value["valor_total"];
+			
+			$value["valor_total"] = Lang::get('geral.rs')." ".number_format((float)$value["valor_total"], 2, '.', '');
 			array_push($json["aaData"], array_values($value));
 		}
 		
@@ -340,8 +352,9 @@ class PedidoController extends BaseController{
 
 		$dados = Input::all();
 		$codigo = $dados["codigo"];
+		$dados["status"] = 3;
 		unset($dados["codigo"]);
-		
+		unset($dados["_token"]);
 		$result = DB::table('pedidos')
         ->where('cod', $codigo)
         ->update($dados);

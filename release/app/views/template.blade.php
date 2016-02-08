@@ -130,12 +130,6 @@
                     </a>
                   </li>
                   <li>
-                    <a href="#">
-                      <i class="fa fa-bell"></i>
-                      <span>{{trans('geral.menu_notif')}}</span>
-                    </a>
-                  </li>
-                  <li>
                     <a href="{{url('panel-control/logout')}}">
                       <i class="fa fa-support"></i>
                       <span>{{trans('geral.menu_suport')}}</span>

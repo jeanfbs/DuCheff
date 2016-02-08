@@ -9,9 +9,46 @@ class DashboardController extends BaseController
 	}
 
 	public function getDashboard()
-	{
-		Session::put('flag',1);
-		return View::make("dashboard");
+	{	Session::put('flag',1);
+
+		$d = date("Y-m-d");
+		$pdias = PedidosModel::where("data",$d)->get();
+		$pmes = DB::select("SELECT * FROM `pedidos` WHERE MONTH(data) LIKE MONTH('{$d}')");
+		$ppp = DB::table("item_pedido")
+		->join("pratos","item_pedido.cod_prato","=","pratos.cod")
+		->select(DB::raw("count(cod_prato) as qtd_prato,cod_prato,nome"))
+		->groupBy("item_pedido.cod_prato")
+		->get();
+
+		$prato_mais_pedido = "";
+		$aux = 0;
+		foreach ($ppp as $key => $value) {
+			if($aux < $value->qtd_prato)
+			{
+				$aux = $value->qtd_prato;
+				$prato_mais_pedido = $value->nome;
+			}
+		}
+		$qtd_pdias = count($pdias);
+		$qtd_pmes = count($pmes);
+
+		$table_clientes = DB::select(
+		"SELECT count(pedidos.cod) as qtd_pedidos,max(pedidos.data) as ultimo_pedido,clientes.nome FROM `pedidos` 
+		inner join clientes on pedidos.cod_cliente = clientes.cod 
+		inner join item_pedido on item_pedido.cod_pedido = pedidos.cod 
+		inner join pratos on item_pedido.cod_prato = pratos.cod 
+		group by pedidos.cod_cliente 
+		order by qtd_pedidos desc limit 10");
+
+
+		$dados = 
+		[
+			"qtd_pdias" => $qtd_pdias,
+			"qtd_pmes" => $qtd_pmes,
+			"ppp" => $prato_mais_pedido,
+			"tclientes" => $table_clientes
+		];
+		return View::make("dashboard")->with($dados);
 	}
 
 	public function getPerfil()

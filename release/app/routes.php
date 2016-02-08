@@ -11,7 +11,12 @@
 |
 */
 
-Route::get('/','LoginController@index');
+Route::get('/','SiteController@getIndex');
+Route::get('/cardapio/{id?}','SiteController@getCardapio');
+Route::get('/download-app','SiteController@getAplicativo');
+Route::get('/contato','SiteController@getContato');
+Route::post('/contato','SiteController@postContato');
+Route::get('/login','LoginController@index');
 Route::post('auth','LoginController@autenticar');
 Route::get('auth',function(){
 	return View::make('assets.404');

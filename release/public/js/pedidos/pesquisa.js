@@ -5,7 +5,8 @@ $(document).ready(function() {
 |	Cria os Botões de Ver,Editar e Excluir
 ------------------------------------------------------------------*/
 var actions_buttons ='<a chref="#ver" class="abrir"><i class=" fa fa-eye fa-fw" data-toggle="tooltip" data-placement="left" title="'+pt_br.tooltip_ver+'"></i></a> ';
-    actions_buttons +='<a chref="#concluir" class="concluir"><i class="text-success fa fa-check fa-fw" data-toggle="tooltip" data-placement="left" title="'+pt_br.tooltip_aceitar+'"></i></a> ';
+    actions_buttons +='<a chref="#concluir" class="concluir"><i class="text-success fa fa-check fa-fw" data-toggle="tooltip" data-placement="left" title="'+pt_br.tooltip_concluir+'"></i></a> ';
+    actions_buttons +='<a chref="#pago" class="pago"><i class="text-primary fa fa-usd fa-fw" data-toggle="tooltip" data-placement="left" title="'+pt_br.tooltip_pago+'"></i></a> ';
     actions_buttons += '<a href="#rejeitar" class="rejeitar"><i class="text-danger fa fa-times fa-fw" data-toggle="tooltip" data-placement="left" title="'+pt_br.tooltip_rejeitar+'"></i></a>';
 				    					 
 /* ------------------------------------------------------------------ 
@@ -40,7 +41,7 @@ var dataTable = $('#tabela_abertos').DataTable( {
                 "name": "pedidos.nro_mesa" 
             },
             { 
-                "width":"25%",
+                "width":"20%",
                 "name": "clientes.nome" 
             },
             { 
@@ -48,11 +49,11 @@ var dataTable = $('#tabela_abertos').DataTable( {
                 "name": "pedidos.data" 
             },
             { "name": "pedidos.horario" },
-            { "name": "pedidos.status" },
+            { "name": "pedidos.status","data":5 },
             { "name": "pedidos.origem" },
-            { "name": "pedidos.valor_total" },
+            { "name": "pedidos.valor_total","width":"10%", },
 		    {
-                "width":"10.5%",
+                "width":"12.5%",
 		    	"data":null,
 		    	"orderable":      false,
 		    	"defaultContent":actions_buttons
@@ -62,15 +63,10 @@ var dataTable = $('#tabela_abertos').DataTable( {
 
 $(document).off("click",".concluir").on("click",".concluir",function(){
 
-    status = $(this).parents("tr").children("td:eq(5)").text();
+    status = $(this).parents("tr").children("td:eq(5)").children("span").attr("cod_status");
 
-
-    /*
-     * Atenção se for preciso modificar o label de algum status será
-     * necessário alterar esse teste para que o usuario possa apenas
-     * concluir um pedido aceito.
-     */
-    if(status.length < 12)
+    
+    if(status  != 2)
     {
         alertErro(pt_br.msg_erro_conclusao);
         return false;
@@ -97,6 +93,40 @@ $(document).off("click",".concluir").on("click",".concluir",function(){
 
 });
 
+$(document).off("click",".pago").on("click",".pago",function(){
+
+    status = $(this).parents("tr").children("td:eq(5)").text();
+
+
+    status = $(this).parents("tr").children("td:eq(5)").children("span").attr("cod_status");
+
+    
+    if(status  != 4)
+    {
+        alertWarning(pt_br.msg_erro_pagamento);
+        return false;
+    }
+    
+    $.ajax({
+
+        type: "POST",
+        url : pt_br.absolute_url+"/panel-control/pedidos/status",
+        data : {codigo:codigo,status:5}
+        }).done(function(res){
+          
+            if(parseInt(res,10) == 1)
+            {
+                dataTable.draw();
+                alertSucesso(pt_br.msg_pedido_concluido);
+            }
+            else
+            {
+                alertErro(pt_br.msg_erro);
+            }
+
+        });
+
+});
 $("#aceitar").off("click").on("click",function(){
 
     var codigo = parseInt($("#pedido_cod").val(),10);
@@ -124,21 +154,40 @@ $("#aceitar").off("click").on("click",function(){
 });
 $(document).off("click",".rejeitar").on("click",".rejeitar",function(){
     
+    $("#pe_rejeitar").modal("show");
+    var codigo = parseInt($(this).parents("tr").children("td:eq(0)").text(),10);
+    $("#cod_pedido_rejeitado").val(codigo);
+
+});
+
+$("#rejeitar").on('click', function(event) {
+
+
+    if($("#observacoes").val() == "")
+    {
+        alertErro(pt_br.msg_erro_motivo);
+        return false;
+    }
     if(!confirm(pt_br.confirma_rejeicao))
         return false;
-    var codigo = parseInt($(this).parents("tr").children("td:eq(0)").text(),10);
+    dados = {};
+    dados.codigo = parseInt($("#cod_pedido_rejeitado").val(),10);
+    dados.observacoes = $("#motivo").val();
     
     $.ajax({
 
         type: "POST",
         url : pt_br.absolute_url+"/panel-control/pedidos/status",
-        data : {codigo:codigo,status:3}
+        data : dados
         }).done(function(res){
           
             if(parseInt(res,10) == 1)
             {
+                $("#pe_rejeitar").modal("hide");
                 dataTable.draw();
                 alertSucesso(pt_br.msg_pedido_rejetado);
+                $("#cod_pedido_rejeitado").val("");
+                $("#motivo").val("");
             }
             else
             {
@@ -146,7 +195,6 @@ $(document).off("click",".rejeitar").on("click",".rejeitar",function(){
             }
 
         });
-
 });
 
 /*------------------------------------------------------------------------
@@ -186,7 +234,7 @@ $(document).off("click",".abrir").on("click",".abrir",function(){
         $("#sphorario").text(res.horario);
         $("#spnro_mesa").text(((res.nro_mesa != 0) ? res.nro_mesa:''));
         $("#spobs").text(res.observacoes);
-        $("#valor_total").text(res.valor_total);
+        $("#valor_total").text(parseFloat(res.valor_total).toFixed(2));
     	
         $("#itens_bebidas_modal").empty();
         $("#itens_pedido_modal").empty();

@@ -115,6 +115,33 @@
     </div>
   </div>
 </div>
+
+<!-- Modal de Rejeição de Pedidos -->
+<div class="modal fade" id="pe_rejeitar" tabindex="-1" role="dialog" aria-labelledby="pe_rejeitar">
+  <div class="modal-dialog  devoops-modal" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">{{trans('geral.titulo_modal_rejeitar')}}</h4>
+      </div>
+      <div class="modal-body">
+	    {{Form::open(array('class' => 'form-horizontal ','id' => 'form_rejeitar_pedido'))}}
+			<input type="hidden" id="cod_pedido_rejeitado" />
+			<div class="form-group">
+				<label class="col-sm-2 control-label">{{trans('geral.motivo')}}</label>
+				<div class="col-md-9">
+					<textarea class="form-control" rows="3" id="motivo"></textarea>
+				</div>
+			</div>
+		{{Form::close()}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">{{trans('geral.button_cancelar')}}</button>
+        <button type="button" class="btn btn-danger" id="rejeitar">{{trans('geral.button_rejeitar')}}</button>
+      </div>
+    </div>
+  </div>
+</div>
 <script src="{{url('plugins/datatables/js/jquery.dataTables.js')}}"></script>
 <script src="{{url('plugins/datatables/js/dataTables.bootstrap.min.js')}}"></script>
 <script src="{{url('js/pedidos/pesquisa.js')}}"></script>
