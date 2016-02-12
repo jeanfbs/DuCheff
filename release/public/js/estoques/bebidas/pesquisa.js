@@ -4,9 +4,9 @@ $(document).ready(function() {
 /* ------------------------------------------------------------------ 
 |	Cria os Botões de Ver,Editar e Excluir
 ------------------------------------------------------------------*/
-var actions_buttons ='<a class="view"><i class="fa fa-eye" data-toggle="tooltip" data-placement="top" title="'+pt_br.tooltip_ver+'"></i></a> ';
-    actions_buttons += '<a data-toggle="modal" data-target="#edit" class="editar"><i class="fa fa-edit" data-toggle="tooltip" data-placement="top" title="'+pt_br.tooltip_editar+'"></i></a> ';
-	actions_buttons += '<a href="#deletar" class="del"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="'+pt_br.tooltip_deletar+'"></i></a>';
+var actions_buttons ='<a class="view"><i class="fa fa-eye" data-toggle="tooltip" data-placement="left" title="'+pt_br.tooltip_ver+'"></i></a> ';
+    actions_buttons += '<a data-toggle="modal" data-target="#edit" class="editar"><i class="fa fa-edit" data-toggle="tooltip" data-placement="left" title="'+pt_br.tooltip_editar+'"></i></a> ';
+	actions_buttons += '<a href="#deletar" class="del"><i class="fa fa-trash" data-toggle="tooltip" data-placement="left" title="'+pt_br.tooltip_deletar+'"></i></a>';
 				    					 
 /* ------------------------------------------------------------------ 
 |	DataTables Plugin

@@ -2,9 +2,9 @@ $(document).ready(function() {
 /* ------------------------------------------------------------------ 
 |	Cria os Botões de Ver,Editar e Excluir
 ------------------------------------------------------------------*/
-var actions_buttons ='<a class="view"><i class="fa fa-eye" data-toggle="tooltip" data-placement="top" title="'+pt_br.tooltip_ver+'"></i></a> ';
-	actions_buttons += '<a data-toggle="modal" data-target="#edit" class="editar"><i class="fa fa-edit" data-toggle="tooltip" data-placement="top" title="'+pt_br.tooltip_editar+'"></i></a> ';
-	actions_buttons += '<a href="#deletar" class="del"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="'+pt_br.tooltip_deletar+'"></i></a>';
+var actions_buttons ='<a class="view"><i class="fa fa-eye" data-toggle="tooltip" data-placement="left" title="'+pt_br.tooltip_ver+'"></i></a> ';
+	actions_buttons += '<a data-toggle="modal" data-target="#edit" class="editar"><i class="fa fa-edit" data-toggle="tooltip" data-placement="left" title="'+pt_br.tooltip_editar+'"></i></a> ';
+	actions_buttons += '<a href="#deletar" class="del"><i class="fa fa-trash" data-toggle="tooltip" data-placement="left" title="'+pt_br.tooltip_deletar+'"></i></a>';
 				    					 
 /* ------------------------------------------------------------------ 
 |	DataTables Plugin
@@ -153,7 +153,7 @@ $(document).off("click",".editar").on("click",".editar",function(){
 $("#salvar_edicao").off("click").on("click",function(){
 
 	/* valida o formulario para: Campos vazios ou senhas diferentes*/
-	if($("#edicao .required").validation())
+	if($("#edicao .required").validation() || $("#tipo").val() == "")
 	{
 		alertErro(pt_br.campos_vazios);
 		return false;

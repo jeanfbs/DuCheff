@@ -1,7 +1,18 @@
 <?php 
-
+/**
+*       TECHMOB - Empresa Júnior da Faculdade de Computação - UFU 
+*       
+*       Controlador do Web Site
+*
+*       @author: Jean Fabrício <jeanufu21@gmail.com>
+*       @since 12/02/2016
+*       
+*/
 class SiteController extends BaseController{
 
+	/*******************************************
+	*  Ação que retorna a view root do web site
+	********************************************/
 	public function getIndex()
 	{
 		$cardapio = TipoPratoModel::where("deletada","<>",1)
@@ -21,6 +32,9 @@ class SiteController extends BaseController{
 		return View::make('site.home')->with($dados);
 	}
 
+	/*******************************************
+	*  Ação que retorna a view de cardapio
+	********************************************/
 	public function getCardapio($cod_tipo_prato = null)
 	{
 
@@ -72,16 +86,24 @@ class SiteController extends BaseController{
 
 	}
 
-
+	/*******************************************
+	*  Ação que retorna a view Donwload App
+	********************************************/
 	public function getAplicativo()
 	{
 		return View::make("site.app");
 	}
-
+	/*******************************************
+	*  Ação que retorna a view Contatos
+	********************************************/
 	public function getContato()
 	{
 		return View::make("site.contato");
 	}
+	/*******************************************
+	*  Ação que envia um email com a mensagem do 
+	*  usuario do site.
+	********************************************/
 	public function postContato()
 	{
 		$dados = Input::all();
@@ -93,14 +115,14 @@ class SiteController extends BaseController{
 		'msg' => $dados["msg"]
 		];
 
-		/* ENVIA O EMAIL DE NOTIFICAÇÃO PARA O GERENTE 	*/
+		/* ENVIA O EMAIL */
 			Mail::send('emails.email',$data , function($m) use($dados){
 				$m->to("jeanufu21@gmail.com")->subject($dados["assunto"]);
 			});
 			
 		$data = 
 		[
-			"msg" => "Sua mensagem foi encaminhada! Obrigado pela atenção!"
+			"msg" => Lang::get('geral.msg_contatos')
 		];
 		return View::make("site.contato")->with($data);
 	}

@@ -1,5 +1,13 @@
 <?php 
-
+/**
+*	TECHMOB - Empresa Júnior da Faculdade de Computação - UFU 
+*	
+*	Controlador Cliente
+*
+*	@author: Jean Fabrício <jeanufu21@gmail.com>
+*	@since 12/02/2016
+*	
+*/
 class ClienteController extends BaseController{
 
 
@@ -129,6 +137,9 @@ class ClienteController extends BaseController{
 
 		$codigo = $dados["cod"];
 		unset($dados["cod"]);
+		if(isset($dados["senha"]) && $dados["senha"] != "")
+			$dados["senha"] = sha1($dados["senha"]);
+	
 		$result = DB::table('clientes')
         ->where('cod', $codigo)
         ->update($dados);

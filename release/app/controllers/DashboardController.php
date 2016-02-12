@@ -1,5 +1,13 @@
 <?php 
-
+/**
+*	TECHMOB - Empresa Júnior da Faculdade de Computação - UFU 
+*	
+*	Controlador Dashboard
+*
+*	@author: Jean Fabrício <jeanufu21@gmail.com>
+*	@since 12/02/2016
+*	
+*/
 class DashboardController extends BaseController
 {
 
@@ -8,6 +16,9 @@ class DashboardController extends BaseController
 		return Redirect::to('panel-control/dashboard');
 	}
 
+	/*********************************************************************
+	 * Acao que recupera os dados para os gráficos e tabelas no dashboard
+	 *********************************************************************/
 	public function getDashboard()
 	{	Session::put('flag',1);
 
@@ -48,7 +59,9 @@ class DashboardController extends BaseController
 		];
 		return View::make("dashboard")->with($dados);
 	}
-
+	/***********************************************************************
+	* Acao que retorna a view do Perfil junto com os dados do usuario logado
+	************************************************************************/
 	public function getPerfil()
 	{
 		$funcionarios = FuncionariosModel::where('cod',Session::get('cod_user'))
@@ -61,6 +74,9 @@ class DashboardController extends BaseController
 		];
 		return View::make("menu.perfil")->with($dados);
 	}
+	/**
+	*	Acao que faz a ediçao dos dados do perfil do usuario.
+	*/
 	public function postPerfil()
 	{
 		$dados = Input::all();
@@ -84,7 +100,9 @@ class DashboardController extends BaseController
 		Session::flash("msg",$msg);
 		return Redirect::back();
 	}
-	
+	/********************************************
+	* Acao que faz o logout do usuario
+	*******************************************/
 	public function getLogout()
 	{
 		Session::forget('cod_user');
@@ -93,6 +111,9 @@ class DashboardController extends BaseController
 
 		return Redirect::to("/login");
 	}
+	/************************************************
+	* Acao que retorna os dados do grafico de pedidos
+	*************************************************/
 	public function getGraficopedidos()
 	{
 		
@@ -105,6 +126,9 @@ class DashboardController extends BaseController
 		return json_encode($pedidos);
 
 	}
+	/********************************************************
+	* Acao que retorna os dados do grafico de pedidos via App
+	**********************************************************/
 	public function getGraficoapp()
 	{
 		
@@ -115,7 +139,9 @@ class DashboardController extends BaseController
 			group by month(data);");
 		return json_encode($pedidos);
 	}
-
+	/***********************************************
+	* Acao que retorna os dados do grafico de pratos
+	************************************************/
 	public function getGraficopratos()
 	{
 		
@@ -156,7 +182,9 @@ class DashboardController extends BaseController
 		return json_encode($donut);
 
 	}
-
+	/********************************************************
+	* Acao que retorna os dados do grafico de novos clientes
+	*********************************************************/
 	public function getGraficonovosclientes()
 	{
 		$db1 = DB::select(

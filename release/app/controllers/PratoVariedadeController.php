@@ -1,6 +1,14 @@
 <?php 
 
-
+/**
+*       TECHMOB - Empresa Júnior da Faculdade de Computação - UFU 
+*       
+*       Controlador de Prato Variedade
+*
+*       @author: Jean Fabrício <jeanufu21@gmail.com>
+*       @since 12/02/2016
+*       
+*/
 class PratoVariedadeController extends BaseController{
 
 	public function getIndex(){

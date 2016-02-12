@@ -1,6 +1,13 @@
 <?php 
-
-
+/**
+*       TECHMOB - Empresa Júnior da Faculdade de Computação - UFU 
+*       
+*       Controlador de Pedidos
+*
+*       @author: Jean Fabrício <jeanufu21@gmail.com>
+*       @since 12/02/2016
+*       
+*/
 class PedidoController extends BaseController{
 
 
@@ -174,6 +181,34 @@ class PedidoController extends BaseController{
 		$pedidos = DB::table("pedidos")
 		->leftJoin("clientes","clientes.cod","=","pedidos.cod_cliente")
 		->select(DB::raw('SQL_CALC_FOUND_ROWS *'))
+		->where("pedidos.cod","=",$search["value"])
+		->orWhere(function($query) use($search){
+			$exists = PedidosModel::where("data","LIKE","%".$search["value"]."%")
+					  ->get();
+			if(count($exists) > 0)
+			{
+				$query->where("pedidos.data","LIKE","%".$search["value"]."%");
+				return true;
+			}
+
+			$exists = ClientesModel::where("nome","LIKE","%".$search["value"]."%")
+					  ->get();
+
+			if(count($exists) > 0)
+			{
+				$query->where("clientes.nome","LIKE","%".$search["value"]."%");
+				return true;
+			}
+
+			$exists = PedidosModel::where("valor_total","<=",$search["value"])
+					  ->get();
+			if(count($exists) > 0)
+			{
+				$query->where("pedidos.valor_total","<=",$search["value"]);
+				return true;
+			}
+
+		})
 		->orderBy("pedidos.cod","desc")
 		->take($limit)
 		->skip($start)
@@ -186,6 +221,34 @@ class PedidoController extends BaseController{
 
 		$pedidos = DB::table("pedidos")
 		->leftJoin("clientes","clientes.cod","=","pedidos.cod_cliente")
+		->where("pedidos.cod","=",$search["value"])
+		->orWhere(function($query) use($search){
+			$exists = PedidosModel::where("data","LIKE","%".$search["value"]."%")
+					  ->get();
+			if(count($exists) > 0)
+			{
+				$query->where("pedidos.data","LIKE","%".$search["value"]."%");
+				return true;
+			}
+
+			$exists = ClientesModel::where("nome","LIKE","%".$search["value"]."%")
+					  ->get();
+
+			if(count($exists) > 0)
+			{
+				$query->where("clientes.nome","LIKE","%".$search["value"]."%");
+				return true;
+			}
+
+			$exists = PedidosModel::where("valor_total","<=",$search["value"])
+					  ->get();
+			if(count($exists) > 0)
+			{
+				$query->where("pedidos.valor_total","<=",$search["value"]);
+				return true;
+			}
+
+		})
 		->select("pedidos.cod","pedidos.nro_mesa","clientes.nome","pedidos.data",
 			"pedidos.horario","pedidos.status","pedidos.origem","pedidos.valor_total")
 		->orderBy("pedidos.cod","desc")
@@ -362,57 +425,7 @@ class PedidoController extends BaseController{
 			return 0;
 	}
 
-	/*******************************************
-	*  Ação que faz a edição dos dados
-	********************************************/
-	public function postEditar()
-	{
-
-		$dados = Input::all();
-		$file = Input::file("foto");
-		unset($dados["_token"]);
-
-		$codigo = $dados["cod"];
-		unset($dados["cod"]);
-		unset($dados["foto"]);
-		$antiga_foto = $dados["antiga_foto"];
-		unset($dados["antiga_foto"]);
-		if($file != null)
-		{
-			if(file_exists($antiga_foto)) return 0;
-
-			if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-			    //deletar a foto antiga no Windows
-				unlink($antiga_foto);
-			}
-
-			// salva a foto da bebida
-			$extension = $file->getClientOriginalExtension();
-
-			$path = "../app/uploads/bebidas/";
-			
-			if(!is_dir($path))
-			{
-				
-				if(!mkdir($path,0777,true)) return 0;
-			}
-			$filename = date('Y-m-d-H-i-s').".".$extension;
-			$nome_foto = $path.$filename;
-			$file->move($path,$filename);
-		}
-		
-		if(isset($nome_foto))
-			$dados["foto_url"] = "../".$nome_foto;
-		
-		$result = DB::table('bebidas')
-        ->where('cod', $codigo)
-        ->update($dados);
-        
-        if($result)
-			return 1;
-		else
-			return 0;
-	}
+	
 
 	/*******************************************
 	*  Ação que faz a exclusão dos dados

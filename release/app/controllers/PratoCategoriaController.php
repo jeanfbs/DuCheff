@@ -1,6 +1,14 @@
 <?php 
 
-
+/**
+*       TECHMOB - Empresa Júnior da Faculdade de Computação - UFU 
+*       
+*       Controlador de Prato Categoria
+*
+*       @author: Jean Fabrício <jeanufu21@gmail.com>
+*       @since 12/02/2016
+*       
+*/
 class PratoCategoriaController extends BaseController{
 
 	public function getIndex(){
@@ -23,7 +31,7 @@ class PratoCategoriaController extends BaseController{
 			}
 		})
 		->select("prato_categoria.cod_prato","prato_categoria.cod_categoria",
-			"categorias.nome as categoria","pratos.nome as prato")
+			"categorias.nome as categoria","pratos.nome as prato","prato_categoria.limite")
 		->orderBy("pratos.nome","asc")
 		->get();
 

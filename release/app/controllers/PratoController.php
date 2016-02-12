@@ -1,5 +1,13 @@
 <?php 
-
+/**
+*       TECHMOB - Empresa Júnior da Faculdade de Computação - UFU 
+*       
+*       Controlador de Prato
+*
+*       @author: Jean Fabrício <jeanufu21@gmail.com>
+*       @since 12/02/2016
+*       
+*/
 
 class PratoController extends BaseController{
 
@@ -161,6 +169,8 @@ class PratoController extends BaseController{
 		{
 			$value = (array)$value;
 
+			$value["valor"] = number_format((float)$value["valor"], 2, '.', '');
+			
 			if($value["prato_deletado"] == 1)
 				continue;
 			if($value["foto_url"] != null)

@@ -1269,6 +1269,12 @@
 						<p>
 							Para consultar um registro de prato basta digitar sua pesquisa
 							na caixa texto no canto superior direito da tabela de informações.
+							<br>
+							Você também pode consultar os pratos por intervalos de preços,
+							se você informar apenas o 'Valor Mínimo' sua busca retornará
+							todos os valores <b>maiores que</b> o valor informado, se você informar
+							o 'Valor Mínimo e o Valor Máximo' sua busca retornará todos os valores
+							dentro do intervalo informado.<br>
 							A pesquisa não é sensível a maiúsculas ou minúsculas, ou seja, não
 							importa se sua pesquisa for com maiúsculas ou minúsculas, o sistema
 							recuperará todas as informações que coinscidem com a pesquisa.

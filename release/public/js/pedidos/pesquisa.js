@@ -58,7 +58,16 @@ var dataTable = $('#tabela_abertos').DataTable( {
 		    	"orderable":      false,
 		    	"defaultContent":actions_buttons
 		    }
-		  ]
+		  ],
+          "createdRow": function ( row, data, index ) {
+                status = $(data[5]).attr("cod_status");
+                if(status == 1)
+                {
+                    $(row).addClass('text-success');
+                } 
+                else
+                   $(row).removeClass('text-success');        
+            }
 });
 
 $(document).off("click",".concluir").on("click",".concluir",function(){

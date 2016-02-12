@@ -141,12 +141,12 @@ $(document).off("click",".editar").on("click",".editar",function(){
 |------------------------------------------------------------------------*/
 $("#salvar_edicao").off("click").on("click",function(){
 
-	/* valida o formulario para: Campos vazios ou senhas diferentes*/
-	if($("#edicao .required").validation())
+	if($("#edit_produtos").val() == "" || $("#edit_categorias").val() == "")
 	{
 		alertErro(pt_br.campos_vazios);
 		return false;
 	}
+
 	
 	var dados = new FormData(document.querySelector("#edicao"));
 	

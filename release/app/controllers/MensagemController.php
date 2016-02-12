@@ -1,8 +1,19 @@
 <?php 
-
+/**
+*       TECHMOB - Empresa Júnior da Faculdade de Computação - UFU 
+*       
+*       Controlador de Mensagens
+*
+*       @author: Jean Fabrício <jeanufu21@gmail.com>
+*       @since 12/02/2016
+*       
+*/
 class MensagemController extends BaseController{
 
-
+        /**************************************
+         * Acao que recupera a View index de 
+         * Mensagens
+         **************************************/
 	public function getIndex()
 	{
 		$dados = array();
@@ -34,7 +45,10 @@ class MensagemController extends BaseController{
 		return View::make('mensagens.mensagens')->with($extra);
 	}
 
-
+        /**************************************
+         * Acao que recupera os novos comentarios
+         * para a notificação
+         **************************************/
 	public function getNovoscomentarios(){
 
 		$comentarios = ComentarioModel::

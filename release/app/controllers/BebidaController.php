@@ -1,5 +1,14 @@
 <?php 
 
+/**
+*	TECHMOB - Empresa Júnior da Faculdade de Computação - UFU 
+*	
+*	Controlador Bebidas
+*
+*	@author: Jean Fabrício <jeanufu21@gmail.com>
+*	@since 12/02/2016
+*	
+*/
 class BebidaController extends BaseController{
 
 
@@ -164,7 +173,7 @@ class BebidaController extends BaseController{
 		{
 			if(file_exists($antiga_foto)) return 0;
 
-			if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+			if (strtoupper(substr(PHP_OS, 0, 3)) === 'LIN') {
 			    //deletar a foto antiga no Windows
 				unlink($antiga_foto);
 			}

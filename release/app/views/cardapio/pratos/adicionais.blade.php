@@ -98,6 +98,7 @@
 						<tr>
 							<th>{{trans('geral.prato')}}</th>
 							<th>{{trans('geral.categoria')}}</th>
+							<th>{{trans('geral.max')}}</th>
 							<th>{{trans('geral.acao')}}</th>
 						</tr>
 					</thead>

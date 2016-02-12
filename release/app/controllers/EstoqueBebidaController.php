@@ -1,6 +1,14 @@
 <?php 
 
-
+/**
+*	TECHMOB - Empresa Júnior da Faculdade de Computação - UFU 
+*	
+*	Controlador Estoque de Bebidas
+*
+*	@author: Jean Fabrício <jeanufu21@gmail.com>
+*	@since 12/02/2016
+*	
+*/
 class EstoqueBebidaController extends BaseController{
 
 
@@ -95,8 +103,9 @@ class EstoqueBebidaController extends BaseController{
 			if($min != "" && $max != "")
 			$query->whereBetween("estoque_bebidas.qtd_atual",array($min,$max));
 
-			$exists = ProdutosModel::where("nome","LIKE","%".$search["value"]."%")
+			$exists = BebidasModel::where("nome","LIKE","%".$search["value"]."%")
 					  ->get();
+
 			if(count($exists) > 0)
 				$query->where("bebidas.nome","LIKE","%".$search["value"]."%");
 			else
@@ -127,17 +136,17 @@ class EstoqueBebidaController extends BaseController{
 			if($value["deletada"] == 1)
 				continue;
 
-			$explode_1 = explode("-",$value["data_entrada"]);
-			$explode_2 = explode("-",$value["data_vencimento"]);
-
 			if(intval($value["qtd_atual"]) == 0)
 				$value["qtd_atual"] = "<span class='text-danger'>".$value["qtd_atual"]."</span>";
 
-			$value["data_entrada"] = $explode_1[2]."/".$explode_1[1]."/".$explode_1[0];
-			if(strtotime($value["data_vencimento"]) < time())
-				$value["data_vencimento"] = "<span class='text-danger'><i class='fa fa-clock-o'></i> ".$explode_2[2]."/".$explode_2[1]."/".$explode_2[0]."</span>";
+			if(strtotime($value["data_vencimento"]) && time() > strtotime($value["data_vencimento"]))
+			{
+				$value["data_vencimento"] = "<span class='text-danger'>".$value["data_vencimento"]."</span>";
+			}
 			else
-				$value["data_vencimento"] = "<span class='text-primary'>".$explode_2[2]."/".$explode_2[1]."/".$explode_2[0]."</span>";
+			{
+				$value["data_vencimento"] = "<span class='text-primary'>".$value["data_vencimento"]."</span>";	
+			}
 
 			array_push($json["aaData"], array_values($value));
 		}

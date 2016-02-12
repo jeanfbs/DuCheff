@@ -140,8 +140,11 @@ function searchTable(){
             var linha = "<tr>";
                 linha += "<td id="+item.cod_prato+"#"+item.cod_categoria+">"+item.prato+"</td>";
                 linha += "<td>"+item.categoria+"</td>";
-                linha += '<td>';
-                linha += '<a href="#deletar" class="del_cat"><i class="fa fa-trash" data-toggle="tooltip" data-placement="left" title="'+pt_br.tooltip_deletar+'"></i></a></td>';
+                if(item.limite != -1)
+                    linha += '<td>'+item.limite+'</td>';
+                else
+                    linha += '<td>'+pt_br.todos+'</td>';
+                linha += '<td><a href="#deletar" class="del_cat"><i class="fa fa-trash" data-toggle="tooltip" data-placement="left" title="'+pt_br.tooltip_deletar+'"></i></a></td>';
                 linha += "</tr>";
             $("#dados_cat_ajax").append(linha);
         });
