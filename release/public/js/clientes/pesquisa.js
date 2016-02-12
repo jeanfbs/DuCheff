@@ -149,6 +149,7 @@ $(document).off("click",".editar").on("click",".editar",function(){
     	$("input[name=nome]").val(res[0].nome);
     	$("input[name=login]").val(res[0].login);
     	$("input[name=endereco]").val(res[0].endereco);
+    	$("input[name=cidade]").val(res[0].cidade);
     	$("input[name=telefone]").val(res[0].telefone);
     	$("input[name=email]").val(res[0].email);
     });
@@ -238,6 +239,7 @@ function format(f){
 
 	string = '';
 	string += "<b>"+pt_br.format_field_login+"</b>"+' '+f.login+'<br>';
+	string += "<b>"+pt_br.format_field_cidade+"</b>"+' '+f.cidade+'<br>';
     string += "<b>"+pt_br.format_field_senha+"</b>"+' '+f.senha+'<br>';
 
     return string;

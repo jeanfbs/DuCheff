@@ -82,46 +82,22 @@ VALUES (null,'Burn Energético 800 ml',3.00,null,1);
 
 -- Inserções Clientes
 
-INSERT INTO `clientes`(`cod`, `login`, `senha`, `nome`, `endereco`, `telefone`, `email`, `latitude`, `longitude`) 
-VALUES (null,'jcavalcante','40bd001563085fc35165329ea1ff5c5ecbdbbeef','João Cavalcante',
-	         'Rua das Camomilas Nº 210','(034) 32112-8978','jcavalcante@teste.com',18,11);
-INSERT INTO `clientes`(`cod`, `login`, `senha`, `nome`, `endereco`, `telefone`, `email`, `latitude`, `longitude`) 
-VALUES (null,'joliveira','40bd001563085fc35165329ea1ff5c5ecbdbbeef','José Oliveira',
-	         'Rua Doutor Freire Nº 360','(11) 555-1165','joliveira@teste.com',13,16);
-INSERT INTO `clientes`(`cod`, `login`, `senha`, `nome`, `endereco`, `telefone`, `email`, `latitude`, `longitude`) 
-VALUES (null,'coliveira','40bd001563085fc35165329ea1ff5c5ecbdbbeef','Cláudio de Oliveira',
-	         'Rua Profº Maria Antonia Castilho Nº 2110','(11) 12555-2531','coliveira@teste.com',-28,-11);
-INSERT INTO `clientes`(`cod`, `login`, `senha`, `nome`, `endereco`, `telefone`, `email`, `latitude`, `longitude`) 
-VALUES (null,'msantos','40bd001563085fc35165329ea1ff5c5ecbdbbeef','Marcos Santos',
-	         'Rua Bahia Nº 89','(11) 12555-2531','msantos@teste.com',-15,56);
-INSERT INTO `clientes`(`cod`, `login`, `senha`, `nome`, `endereco`, `telefone`, `email`, `latitude`, `longitude`) 
-VALUES (null,'asilva','40bd001563085fc35165329ea1ff5c5ecbdbbeef','Antônio da Silva',
-	         'Rua Tamoios Nº 1213','(11) 555-2023','asilva@teste.com',24,27);
-INSERT INTO `clientes`(`cod`, `login`, `senha`, `nome`, `endereco`, `telefone`, `email`, `latitude`, `longitude`) 
-VALUES (null,'tsilva','40bd001563085fc35165329ea1ff5c5ecbdbbeef','Tatiana Pereira da Silva',
-	         'Rua Eduardo Marques Nº 1212','(11) 12555-2531','tsilva@teste.com',-28,-15);
-INSERT INTO `clientes`(`cod`, `login`, `senha`, `nome`, `endereco`, `telefone`, `email`, `latitude`, `longitude`) 
-VALUES (null,'rcavalcante','40bd001563085fc35165329ea1ff5c5ecbdbbeef','Ronaldo Souza Cavalcante',
-	         'Rua dos Eucaliptos Nº 1212','(11) 12555-2531','rcavalcante@teste.com',0,0);
-INSERT INTO `clientes`(`cod`, `login`, `senha`, `nome`, `endereco`, `telefone`, `email`, `latitude`, `longitude`) 
-VALUES (null,'rsilva','40bd001563085fc35165329ea1ff5c5ecbdbbeef','Roberto Silva',
-	         'Rua dos Eucaliptos Nº 1212','(11) 12555-2531','rsilva@teste.com',-12,6.45);
-INSERT INTO `clientes`(`cod`, `login`, `senha`, `nome`, `endereco`, `telefone`, `email`, `latitude`, `longitude`) 
-VALUES (null,'mpereira','40bd001563085fc35165329ea1ff5c5ecbdbbeef','Marta Pereira',
-	         'Rua dos Eucaliptos Nº 1212','(11) 12555-2531','mpereira@teste.com',-18,29.44);
-INSERT INTO `clientes`(`cod`, `login`, `senha`, `nome`, `endereco`, `telefone`, `email`, `latitude`, `longitude`) 
-VALUES (null,'asouza','40bd001563085fc35165329ea1ff5c5ecbdbbeef','Ana Maria Souza',
-	         'Rua dos Eucaliptos Nº 1212','(11) 12555-2531','asouza@teste.com',12.56,10.7654);
-INSERT INTO `clientes`(`cod`, `login`, `senha`, `nome`, `endereco`, `telefone`, `email`, `latitude`, `longitude`) 
-VALUES (null,null,null,'Patrícia Pereira','Rua Eduardo Marques Nº 1212','(11) 12555-2531',null,0,0);
-INSERT INTO `clientes`(`cod`, `login`, `senha`, `nome`, `endereco`, `telefone`, `email`, `latitude`, `longitude`) 
-VALUES (null,null,null,'Tarsila Ferreira','Rua Eduardo Marques Nº 1212','(11) 12555-2531',null,0,0);
-INSERT INTO `clientes`(`cod`, `login`, `senha`, `nome`, `endereco`, `telefone`, `email`, `latitude`, `longitude`) 
-VALUES (null,null,null,'Francisco Silva','Rua Eduardo Marques Nº 1212','(11) 12555-2531',null,0,0);
-INSERT INTO `clientes`(`cod`, `login`, `senha`, `nome`, `endereco`, `telefone`, `email`, `latitude`, `longitude`) 
-VALUES (null,null,null,'Ana Cláudia Silva','Rua Eduardo Marques Nº 1212','(11) 12555-2531',null,0,0);
-INSERT INTO `clientes`(`cod`, `login`, `senha`, `nome`, `endereco`, `telefone`, `email`, `latitude`, `longitude`) 
-VALUES (null,null,null,'Ana Carolina Rodrigues','Rua Eduardo Marques Nº 1212','(11) 12555-2531',null,0,0);
+INSERT INTO `clientes` (`cod`, `login`, `senha`, `nome`, `endereco`, `telefone`, `email`, `latitude`, `longitude`, `data`, `cidade`) VALUES
+(1, 'jcavalcante', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'João Cavalcante', 'Rua das Camomilas Nº 210', '(034) 32112-8978', 'jcavalcante@teste.com', 18, 11, NULL, 'Uberlandia'),
+(2, 'joliveira', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'José Oliveira', 'Rua Doutor Freire Nº 360', '(11) 555-1165', 'joliveira@teste.com', 13, 16, NULL, 'Uberlandia'),
+(3, 'coliveira', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'Cláudio de Oliveira', 'Rua Profº Maria Antonia Castilho Nº 2110', '(11) 12555-2531', 'coliveira@teste.com', -28, -11, NULL, 'Uberlandia'),
+(4, 'msantos', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'Marcos Santos', 'Rua Bahia Nº 89', '(11) 12555-2531', 'msantos@teste.com', -15, 56, NULL, 'Uberlandia'),
+(5, 'asilva', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'Antônio da Silva', 'Rua Tamoios Nº 1213', '(11) 555-2023', 'asilva@teste.com', 24, 27, NULL, 'Uberlandia'),
+(6, 'tsilva', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'Tatiana Pereira da Silva', 'Rua Eduardo Marques Nº 1212', '(11) 12555-2531', 'tsilva@teste.com', -28, -15, NULL, 'Uberlandia'),
+(7, 'rcavalcante', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'Ronaldo Souza Cavalcante', 'Rua dos Eucaliptos Nº 1212', '(11) 12555-2531', 'rcavalcante@teste.com', 0, 0, NULL, 'Uberlandia'),
+(8, 'rsilva', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'Roberto Silva', 'Rua dos Eucaliptos Nº 1212', '(11) 12555-2531', 'rsilva@teste.com', -12, 6.45, '2016-01-03', 'Uberlandia'),
+(9, 'mpereira', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'Marta Pereira', 'Rua dos Eucaliptos Nº 1212', '(11) 12555-2531', 'mpereira@teste.com', -18, 29.44, '2016-01-24', 'Uberlandia'),
+(10, 'asouza', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'Ana Maria Souza', 'Rua dos Eucaliptos Nº 1212', '(11) 12555-2531', 'asouza@teste.com', 12.56, 10.7654, '2016-01-11', 'Uberlandia'),
+(11, NULL, NULL, 'Patrícia Pereira', 'Rua Eduardo Marques Nº 1212', '(11) 12555-2531', NULL, 0, 0, '2016-01-21', 'Uberlandia'),
+(12, NULL, NULL, 'Tarsila Ferreira', 'Rua Eduardo Marques Nº 1212', '(11) 12555-2531', NULL, 0, 0, '2016-02-19', 'Uberlandia'),
+(13, NULL, NULL, 'Francisco Silva', 'Rua Eduardo Marques Nº 1212', '(11) 12555-2531', NULL, 0, 0, '2016-02-27', 'Uberlandia'),
+(14, NULL, NULL, 'Ana Cláudia Silva', 'Rua Eduardo Marques Nº 1212', '(11) 12555-2531', NULL, 0, 0, '2016-02-24', 'Uberlandia'),
+(15, NULL, NULL, 'Ana Carolina Rodrigues', 'Rua Eduardo Marques Nº 1212', '(11) 12555-2531', NULL, 0, 0, '2015-07-08', 'Uberlandia');
 
 -- Inserções de Produtos
 

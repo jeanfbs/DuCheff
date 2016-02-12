@@ -79,8 +79,10 @@ class AndroidController extends BaseController{
         $dados["senha"] = sha1($json_cliente->senha);
         $dados["nome"] = $json_cliente->nome;
         $dados["endereco"] = $json_cliente->endereco;
+        $dados["cidade"] = $json_cliente->cidade;
         $dados["telefone"] = $json_cliente->telefone;
         $dados["email"] = $json_cliente->email;
+        $dados["data"] = date('Y-m-d');
 		
         $exists = count(ClientesModel::where("nome",$dados["nome"])->get()) > 0;
         if($exists)

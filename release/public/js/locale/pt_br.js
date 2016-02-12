@@ -2,7 +2,7 @@ var pt_br =
 {
 	//Global informações
 	absolute_url: 'http://localhost/ducheff/release/public',
-	
+	//absolute_url: 'http://54.233.127.250/ducheff/release/public',
 	nivel_admin:'Administrador',
 	nivel_atendente:'Atendente',
 	nivel_entregador:'Entregador',
@@ -34,6 +34,7 @@ var pt_br =
 	msg_erro_endereco:'O endereço é obrigatório!',
 	msg_erro_telefone:'O telefone é obrigatório!',
 	msg_erro_exclusao:'Não é possivel excluir esse registro!',
+	format_field_cidade:'Cidade:',
 
 	// Usuário
 	format_field_nome:'Nome:',
@@ -95,6 +96,7 @@ var pt_br =
 	msg_erro_conclusao:'Aceite o pedido antes de concluir!',
 	msg_erro_pagamento:'Só é possivel finalizar o pagamento de pedidos concluidos!',
 	msg_erro_motivo:'Informe o motivo da rejeição!',
+	msg_erro_rejeicao:'Só é possivel rejeitar pedido Enviados!',
 
 	// Estoque
 	msg_erro_qtd_entrada:'A quantidade de entrada é obrigatória!',

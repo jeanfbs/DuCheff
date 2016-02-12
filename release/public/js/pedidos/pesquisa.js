@@ -63,6 +63,7 @@ var dataTable = $('#tabela_abertos').DataTable( {
 
 $(document).off("click",".concluir").on("click",".concluir",function(){
 
+    var codigo = parseInt($(this).parents("tr").children("td:eq(0)").text(),10);
     status = $(this).parents("tr").children("td:eq(5)").children("span").attr("cod_status");
 
     
@@ -95,13 +96,11 @@ $(document).off("click",".concluir").on("click",".concluir",function(){
 
 $(document).off("click",".pago").on("click",".pago",function(){
 
-    status = $(this).parents("tr").children("td:eq(5)").text();
-
-
+    codigo = parseInt($(this).parents("tr").children("td:eq(0)").text(),10);
     status = $(this).parents("tr").children("td:eq(5)").children("span").attr("cod_status");
 
     
-    if(status  != 4)
+    if(status != 4)
     {
         alertWarning(pt_br.msg_erro_pagamento);
         return false;
@@ -154,6 +153,14 @@ $("#aceitar").off("click").on("click",function(){
 });
 $(document).off("click",".rejeitar").on("click",".rejeitar",function(){
     
+    status = $(this).parents("tr").children("td:eq(5)").children("span").attr("cod_status");
+
+    if(status != 1)
+    {
+        alertErro(pt_br.msg_erro_rejeicao);
+        return false;
+    }
+
     $("#pe_rejeitar").modal("show");
     var codigo = parseInt($(this).parents("tr").children("td:eq(0)").text(),10);
     $("#cod_pedido_rejeitado").val(codigo);
@@ -173,7 +180,7 @@ $("#rejeitar").on('click', function(event) {
     dados = {};
     dados.codigo = parseInt($("#cod_pedido_rejeitado").val(),10);
     dados.observacoes = $("#motivo").val();
-    
+    dados.status = 3;
     $.ajax({
 
         type: "POST",
@@ -218,7 +225,7 @@ $(document).off("click",".abrir").on("click",".abrir",function(){
         else
             $("#div_cliente").show();
 
-        if(res.status == 2)
+        if(res.status != 1)
         {
             $("#aceitar").hide();
         }

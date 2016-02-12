@@ -34,9 +34,7 @@ class DashboardController extends BaseController
 
 		$table_clientes = DB::select(
 		"SELECT count(pedidos.cod) as qtd_pedidos,max(pedidos.data) as ultimo_pedido,clientes.nome FROM `pedidos` 
-		inner join clientes on pedidos.cod_cliente = clientes.cod 
-		inner join item_pedido on item_pedido.cod_pedido = pedidos.cod 
-		inner join pratos on item_pedido.cod_prato = pratos.cod 
+		inner join clientes on pedidos.cod_cliente = clientes.cod
 		group by pedidos.cod_cliente 
 		order by qtd_pedidos desc limit 10");
 
@@ -93,6 +91,94 @@ class DashboardController extends BaseController
 		Session::forget('nome_user');
 		Session::forget('tipo_user');
 
-		return Redirect::to("/");
+		return Redirect::to("/login");
 	}
+	public function getGraficopedidos()
+	{
+		
+		$pedidos = DB::select(
+			"SELECT count(cod) as total, DATE_FORMAT(data, '%Y-%m') as data 
+			FROM `pedidos` 
+			where year(data) = year(now())
+			group by month(data);");
+
+		return json_encode($pedidos);
+
+	}
+	public function getGraficoapp()
+	{
+		
+		$pedidos = DB::select(
+			"SELECT count(cod) as total, DATE_FORMAT(data, '%Y-%m') as data 
+			FROM `pedidos` 
+			where year(data) = year(now()) and origem = 2 
+			group by month(data);");
+		return json_encode($pedidos);
+	}
+
+	public function getGraficopratos()
+	{
+		
+		$pratos = DB::select(
+			"SELECT pratos.nome as prato, DATE_FORMAT(pedidos.data, '%Y-%m') as data ,count(pratos.cod) as total_pratos 
+			FROM pedidos inner join `item_pedido` 
+			on pedidos.cod = item_pedido.cod_pedido 
+			inner join pratos on pratos.cod = item_pedido.cod_prato 
+			where month(pedidos.data) = month(now())
+			and year(pedidos.data) = year(now())
+			group by pratos.cod , month(pedidos.data) 
+			order by data asc 
+			limit 5");
+
+		$db = DB::select(
+			"SELECT count(pratos.cod) as total_pratos 
+			FROM pedidos 
+			inner join `item_pedido` on pedidos.cod = item_pedido.cod_pedido 
+			inner join pratos on pratos.cod = item_pedido.cod_prato 
+			where month(pedidos.data) = month(now())
+			and year(pedidos.data) = year(now())
+			limit 5");
+
+		$tp =  $db[0]->total_pratos;
+		
+		$donut = array();
+
+		foreach ($pratos as $key => $value) {
+			$tmp = array();
+
+			$tmp["value"] = number_format((float)((intval($value->total_pratos) / intval($tp)) * 100), 2, '.', '');
+			$tmp["label"] = $value->prato;
+			$tmp["formatted"] = number_format((float)((intval($value->total_pratos) / intval($tp)) * 100), 2, '.', '');
+			$tmp["formatted"] .= "%";
+			array_push($donut,$tmp);
+		}
+
+		return json_encode($donut);
+
+	}
+
+	public function getGraficonovosclientes()
+	{
+		$db1 = DB::select(
+			"SELECT count(cod) as quantidade, DATE_FORMAT(data, '%Y-%m') as data
+			FROM `clientes` 
+            where year(data) = year(now())
+			group by month(data);");
+		
+		$dados = array();
+		
+		foreach ($db1 as $key => $value) {
+			
+			$tmp = array();
+			$tmp["data"] = $value->data;
+			$tmp["a"] = $value->quantidade;
+			
+			array_push($dados, $tmp);
+
+		}
+		
+
+		return json_encode($dados);
+	}
+
 }

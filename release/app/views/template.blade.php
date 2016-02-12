@@ -129,8 +129,22 @@
                       <span>{{trans('geral.menu_perfil')}}</span>
                     </a>
                   </li>
+                  <li class="divider"></li>
                   <li>
-                    <a href="{{url('panel-control/logout')}}">
+                    <a href="{{url('panel-control/pedidos')}}">
+                      <i class="fa fa-bell"></i>
+                      <span>{{trans('geral.menu_alerta')}}</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="{{url('panel-control/mensagens')}}">
+                      <i class="fa fa-envelope"></i>
+                      <span>{{trans('geral.menu_mensagens')}}</span>
+                    </a>
+                  </li>
+                  <li class="divider"></li>
+                  <li>
+                    <a href="{{url('panel-control/ajuda')}}">
                       <i class="fa fa-support"></i>
                       <span>{{trans('geral.menu_suport')}}</span>
                     </a>

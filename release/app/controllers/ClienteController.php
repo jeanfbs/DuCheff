@@ -23,6 +23,7 @@ class ClienteController extends BaseController{
 		$dados = Input::all();
 		
 		$dados["senha"] = sha1($dados["senha"]);
+		$dados["data"] = date('Y-m-d');
 		$cliente = new ClientesModel($dados);
 		$status = $cliente->save();
 

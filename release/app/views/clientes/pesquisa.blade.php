@@ -61,6 +61,12 @@
 			</div>
 		</div>
 		<div class="form-group">
+			<label class="col-sm-2 control-label">*{{trans('geral.cidade')}}</label>
+			<div class="col-sm-8">
+				<input type="text" class="form-control required" name="cidade" maxlength="40" placeholder="{{trans('geral.cidade')}}" title="{{trans('geral.cidade')}}">
+			</div>
+		</div>
+		<div class="form-group">
 			<label class="col-sm-2 control-label">*{{trans('geral.telefone')}}</label>
 			<div class="col-sm-8">
 				<input type="text" class="form-control required" name="telefone" maxlength="40" placeholder="{{trans('geral.telefone')}}" title="{{trans('geral.telefone')}}">

@@ -38,10 +38,12 @@ CREATE TABLE IF NOT EXISTS clientes(
 	senha VARCHAR(50),
 	nome VARCHAR(40) not null,
 	endereco VARCHAR(70) not null,
+	cidade VARCHAR(40) not null,
 	telefone VARCHAR(25) not null,
 	email VARCHAR(40) default null,
 	latitude FLOAT default 0.00,
-	longitude FLOAT default 0.00
+	longitude FLOAT default 0.00,
+	data DATE DEFAULT NULL 
 );
 
 CREATE TABLE IF NOT EXISTS comentarios(

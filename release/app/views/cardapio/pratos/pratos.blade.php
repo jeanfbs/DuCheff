@@ -30,7 +30,7 @@
 					<a class="expand-link">
 						<i class="fa fa-expand"></i>
 					</a>
-					<a href="#help">
+					<a href="{{url('panel-control/ajuda#pratos')}}">
 						<i class="fa fa-question-circle"></i>
 					</a>
 				</div>

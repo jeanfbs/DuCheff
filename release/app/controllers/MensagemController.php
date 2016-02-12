@@ -13,10 +13,13 @@ class MensagemController extends BaseController{
 
         $comentarios = DB::table("comentarios")
         ->join("clientes","comentarios.cod_cliente","=","clientes.cod")
+        ->select("comentarios.cod","comentarios.data","comentarios.tipo",
+                "comentarios.horario","comentarios.mensagem","comentarios.status",
+                "clientes.nome","clientes.email")
         ->orderBy("comentarios.cod","desc")
         ->take(10)
         ->get();
-
+        
         foreach ($comentarios as $key => $value) {
         	
         	$tmp = $value->data;

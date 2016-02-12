@@ -33,6 +33,8 @@ return array(
 	/* Nav Bar labels */
 	'hello'					=> 'Bem Vindo',
 	'menu_perfil' 			=> 'Perfil',
+	'menu_alerta' 			=> 'Novos Pedidos',
+	'menu_mensagens' 		=> 'Mensagens',
 	'menu_suport'     		=> 'Suporte',
 	'menu_sair'				=> 'Sair',
 
@@ -73,15 +75,21 @@ return array(
 //  		 Labels DashBoard
 
 	'titulo_dash' => 'Dashboard',
+	'historico' => 'Histórico',
+	'graph_pedidos' => 'Gráfico de Pedidos',
+	'graph_app' => 'Gráfico de Pedidos via Aplicativo',
+	'graph_novos_clientes' => 'Gráfico Novos Clientes',
+	'graph_pratos_mais_pedidos' => 'Gráfico Pratos mais Pedidos',
 	'pedidos_dia' => 'Pedidos Diários',
 	'pedidos_mes' => 'Pedidos Mensais',
 	'prato_mais_pedido' => 'Mais pedido',
 	'ranked' => 'Clientes X Pedidos',
+	'tab_estatisticas' => 'Estatísticas',
 	'col_cliente' => 'Cliente',
 	'col_pedidos' => 'Media Pedidos',
 	'col_prato' => 'Prato mais Pedido',
 	'col_ultimo_pedido' => 'Ultimo Pedido',
-	
+	'calendario' => 'Calendário',
 /*********************************************************************************/
 //  		 Labels Funcionários 	
 
@@ -197,6 +205,7 @@ return array(
 	'mesa' =>'Mesa',
 	'cliente' => 'Cliente',
 	'endereco' => 'Endereço Completo',
+	'cidade' => 'Cidade',
 	'telefone' => 'Telefone',
 	'nro_mesa' => 'Nº Mesa',
 	'data' => 'Data do Pedido',
@@ -272,6 +281,8 @@ return array(
 	'msg_pedido_cancelado' => 'Seu pedido foi cancelado. Agradecemos sua atenção!',
 	'msg_sugestao_enviada' => 'Sua mensagem foi enviada. Obrigado por sua atenção!',
 
-
+/*********************************************************************************/
+//  		 Suporte do Sistema
+	'suporte' => 'Suporte',
 );
 

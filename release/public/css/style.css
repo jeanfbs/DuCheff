@@ -1254,14 +1254,12 @@ td.beauty-hover {
 }
 #messages-menu {
   position:fixed;
-  top:90px;
   background:#a5a5a5;
   margin:0;
   height: 100%;
   z-index: 2;
 }
 #messages-list {
-  margin-top: 40px;
   padding: 0;
 }
 .one-list-message {

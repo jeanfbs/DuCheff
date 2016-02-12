@@ -20,7 +20,7 @@
 			<div class="col-md-2">
 				<select class="form-control" name="unidade_medida">
 					<option value=""></option>
-					<option value="GM">GM</option>
+					<option value="UN">UN</option>
 					<option value="KG">KG</option>
 				</select>
 			</div>

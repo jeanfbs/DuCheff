@@ -39,7 +39,6 @@
 				<select class="form-control" name="nivel" title="Nivel de Acesso">
 				  <option value="1">{{trans('geral.nivel_admin')}}</option>
 				  <option value="2">{{trans('geral.nivel_atendente')}}</option>
-				  <option value="3">{{trans('geral.nivel_entregador')}}</option>
 				</select>
 			</div>
 		</div>

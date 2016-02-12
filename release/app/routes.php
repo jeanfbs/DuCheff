@@ -22,6 +22,8 @@ Route::get('auth',function(){
 	return View::make('assets.404');
 });
 
+
+
 // Android Web Service
 Route::controller('/android', "AndroidController");
 
@@ -30,6 +32,12 @@ Route::group(array('prefix' => 'panel-control','before' => 'logado'),function(){
 	Route::get('dashboard','DashboardController@getDashboard');
 	Route::get('logout','DashboardController@getLogout');
 	Route::get('perfil','DashboardController@getPerfil');
+	Route::get('grafico-pedidos','DashboardController@getGraficopedidos');
+	Route::get('grafico-app','DashboardController@getGraficoapp');
+	Route::get('grafico-pratos','DashboardController@getGraficopratos');
+	Route::get('grafico-nvclientes','DashboardController@getGraficonovosclientes');
+	Route::get('historico','DashboardController@getHistorico');
+	
 	Route::post('perfil','DashboardController@postPerfil');
 
 	Route::controller('/mensagens', "MensagemController");
@@ -53,7 +61,17 @@ Route::group(array('prefix' => 'panel-control','before' => 'logado'),function(){
 
 	Route::controller('/estoque-produtos', "EstoqueProdutoController");
 	Route::controller('/estoque-bebidas', "EstoqueBebidaController");
-	// Route::controller('/historico','HistoricoController');
+	
+	Route::controller('ajuda','SuporteController');
 
 
+});
+
+// Metodo utilizado igualmente para o
+	// missing do controller porém aqui
+	// e da propria aplicação
+
+App::missing(function($exception)
+{
+	return View::make('assets.404');
 });

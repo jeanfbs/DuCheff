@@ -174,8 +174,7 @@ class PedidoController extends BaseController{
 		$pedidos = DB::table("pedidos")
 		->leftJoin("clientes","clientes.cod","=","pedidos.cod_cliente")
 		->select(DB::raw('SQL_CALC_FOUND_ROWS *'))
-		->whereIn("pedidos.status",array(1,2))
-		->orderBy("pedidos.cod","asc")
+		->orderBy("pedidos.cod","desc")
 		->take($limit)
 		->skip($start)
 		->get();
@@ -187,10 +186,9 @@ class PedidoController extends BaseController{
 
 		$pedidos = DB::table("pedidos")
 		->leftJoin("clientes","clientes.cod","=","pedidos.cod_cliente")
-		->whereIn("pedidos.status",array(1,2))
 		->select("pedidos.cod","pedidos.nro_mesa","clientes.nome","pedidos.data",
 			"pedidos.horario","pedidos.status","pedidos.origem","pedidos.valor_total")
-		->orderBy("pedidos.cod","asc")
+		->orderBy("pedidos.cod","desc")
 		->take($limit)
 		->skip($start)
 		->get();
@@ -212,16 +210,16 @@ class PedidoController extends BaseController{
 					$value["status"] = "<span class='text-primary' cod_status=".intval($value["status"]).">".Lang::get('geral.status_aceito')."</span>";
 				break;
 				case 3:
-					$value["status"] = "<span class='text-primary' cod_status=".intval($value["status"]).">".Lang::get('geral.status_rejeitado')."</span>";
+					$value["status"] = "<span class='text-danger' cod_status=".intval($value["status"]).">".Lang::get('geral.status_rejeitado')."</span>";
 				break;
 				case 4:
 					$value["status"] = "<span class='text-primary' cod_status=".intval($value["status"]).">".Lang::get('geral.status_pronto')."</span>";
 				break;
 				case 5:
-					$value["status"] = "<span class='text-primary' cod_status=".intval($value["status"]).">".Lang::get('geral.status_pago')."</span>";
+					$value["status"] = "<span class='text-info' cod_status=".intval($value["status"]).">".Lang::get('geral.status_pago')."</span>";
 				break;
 				case 6:
-					$value["status"] = "<span class='text-primary' cod_status=".intval($value["status"]).">".Lang::get('geral.status_cancelado')."</span>";
+					$value["status"] = "<span class='text-warning' cod_status=".intval($value["status"]).">".Lang::get('geral.status_cancelado')."</span>";
 				break;
 			}
 
@@ -352,7 +350,6 @@ class PedidoController extends BaseController{
 
 		$dados = Input::all();
 		$codigo = $dados["codigo"];
-		$dados["status"] = 3;
 		unset($dados["codigo"]);
 		unset($dados["_token"]);
 		$result = DB::table('pedidos')

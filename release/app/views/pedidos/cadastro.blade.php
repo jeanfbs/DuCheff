@@ -124,7 +124,7 @@
 							<th>{{trans('geral.valor_unit')}}</th>
 							<th>{{trans('geral.valor')}}</th>
 							<th>{{trans('geral.variedade')}}</th>
-							<th><a href="#limpar" id="limpar_itens" data-toggle="tooltip" data-placement="top" title="{{trans('geral.limpar')}}"><i class="fa fa-trash"></i></a></th>
+							<th><a href="#limpar" id="limpar_itens" data-toggle="tooltip" data-placement="left" title="{{trans('geral.limpar')}}"><i class="fa fa-trash"></i></a></th>
 						</tr>
 					</thead>
 					<tbody id="itens_pedido">
@@ -186,7 +186,7 @@
 							<th>{{trans('geral.titulo_bebidas')}}</th>
 							<th style="width:12.5%;">{{trans('geral.valor_bebida_item')}}</th>
 							<th style="width:12.5%;">{{trans('geral.quantidade')}}</th>
-							<th style="width:12.5%;"><a href="#limpar" id="limpar_bebidas" data-toggle="tooltip" data-placement="top" title="{{trans('geral.limpar')}}"><i class="fa fa-trash"></i></a></th>
+							<th style="width:12.5%;"><a href="#limpar" id="limpar_bebidas" data-toggle="tooltip" data-placement="left" title="{{trans('geral.limpar')}}"><i class="fa fa-trash"></i></a></th>
 						</tr>
 					</thead>
 					<tbody id="itens_bebida">

@@ -28,11 +28,8 @@
 					<a class="expand-link">
 						<i class="fa fa-expand"></i>
 					</a>
-					<a href="#help">
+					<a href="{{url('panel-control/ajuda#estoque_bebidas')}}">
 						<i class="fa fa-question-circle"></i>
-					</a>
-					<a class="close-link">
-						<i class="fa fa-times"></i>
 					</a>
 				</div>
 				<div class="no-move"></div>
