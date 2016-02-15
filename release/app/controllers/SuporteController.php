@@ -16,4 +16,5 @@ class SuporteController extends BaseController{
 		
 		return View::make("suporte.suporte");
 	}
+
 }

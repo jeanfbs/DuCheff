@@ -278,6 +278,8 @@ return array(
 	'msg_pedido_enviado' => 'Recebemos seu pedido. Agradecemos pela preferência',
 	'msg_pedido_cancelado' => 'Seu pedido foi cancelado. Agradecemos sua atenção!',
 	'msg_sugestao_enviada' => 'Sua mensagem foi enviada. Obrigado por sua atenção!',
+	'msg_email_nao_localizado' => 'O usuário do email solicitado não foi encontrado!',
+	'msg_email_recuperacao' => 'Um email foi enviado para você com seus dados!',
 
 /*********************************************************************************/
 //  		 Suporte do Sistema

@@ -55,7 +55,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => "jeanfbs302@gmail.com", 'name' => "Macarrão DuCheff"),
+	'from' => array('address' => "sistemaeagleufu@gmail.com", 'name' => "Macarrão DuCheff"),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -81,7 +81,7 @@ return array(
 	|
 	*/
 
-	'username' => "jeanfbs302@gmail.com",
+	'username' => "sistemaeagleufu@gmail.com",
 
 	/*
 	|--------------------------------------------------------------------------
@@ -94,7 +94,7 @@ return array(
 	|
 	*/
 
-	'password' => "808321005",
+	'password' => "techmob123",
 
 	/*
 	|--------------------------------------------------------------------------

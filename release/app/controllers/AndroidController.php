@@ -736,6 +736,61 @@ class AndroidController extends BaseController{
 		
 	}
 
+	public function getSuporteandroid(){
+
+		return View::make("suporte.suporteandroid");
+	}
+
+	public function getRecuperar()
+	{
+		$email = Input::get("email");
+
+		$exists = ClientesModel::where("email",$email)->get();
+		$response = array();
+
+
+		if(count($exists) == 0)
+		{
+			$response['error'] = true;
+			$response['message'] = Lang::get('geral.msg_email_nao_localizado');
+			return json_encode($response);
+		}
+
+		if(isset($exists[0]))
+			$exists = $exists[0];
+		
+		$dados = array();
+		$dados["senha"] = sha1("123");
+		$dados["login"] = "cliente".$exists->cod;
+
+		$result = DB::table('clientes')
+        ->where('cod', $exists->cod)
+        ->update($dados);
+
+        if($result)
+        {
+			$data = [
+			'nome' => $exists->nome,
+			'codigo' => $exists->cod
+			];
+
+			/* ENVIA O EMAIL */
+				Mail::send('emails.recuperacao',$data , function($m) use($email){
+					$m->to($email)->subject("Recuperação de Login e Senha ");
+				});
+
+			$response['error'] = false;
+			$response['message'] = Lang::get('geral.msg_email_recuperacao');
+		}
+		else
+		{
+			$response['error'] = true;
+			$response['message'] = Lang::get('geral.msg_erro');
+		}
+		
+		return json_encode($response);
+	}
+
 
 
 }
