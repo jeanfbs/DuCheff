@@ -11,7 +11,7 @@
     <meta name="author" content="Jean Fabricio">
     <title>@yield('title')</title>
 
-    <link rel="shortcut icon" href="{{url('favicon.ico')}}"/>
+    <link rel="shortcut icon" href="{{url('favicon.ico')}}" type="image/x-icon">
     <link href="{{url('plugins/bootstrap/bootstrap.css')}}" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="{{url('css/shop-homepage.css')}}" rel="stylesheet">

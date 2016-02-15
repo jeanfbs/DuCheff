@@ -7,7 +7,8 @@
     <meta name="description" content="Sistem de Gestão e Controle de Pedidos">
     <meta name="author" content="Jean Fabricio">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="{{url('favicon.ico')}}"/>
+    <link rel="shortcut icon" href="{{url('favicon.ico')}}">
+
     <link href="{{url('plugins/bootstrap/bootstrap.css')}}" rel="stylesheet">
     <link href="{{url('plugins/jquery-ui/jquery-ui.min.css')}}" rel="stylesheet">
     <link href="{{url('css/font-awesome.min.css')}}" rel="stylesheet">

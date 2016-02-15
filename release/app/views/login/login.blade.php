@@ -6,6 +6,7 @@
     <meta name="description" content="Sistema de Controle de Pedidos Delivery">
     <meta name="author" content="Jean Fabrício">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="{{url('favicon.ico')}}">
     <link href="{{url('plugins/bootstrap/bootstrap.css')}}" rel="stylesheet">
     <link href="{{url('css/alertas.css')}}" rel="stylesheet">
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
