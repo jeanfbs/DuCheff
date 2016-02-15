@@ -1,8 +1,8 @@
 var pt_br = 
 {
 	//Global informações
-	absolute_url: 'http://localhost/ducheff/release/public',
-	//absolute_url: 'http://54.233.127.250/ducheff/release/public',
+	//absolute_url: 'http://localhost/ducheff/release/public',
+	absolute_url: 'http://54.233.127.250/ducheff/release/public',
 	nivel_admin:'Administrador',
 	nivel_atendente:'Atendente',
 	nivel_entregador:'Entregador',

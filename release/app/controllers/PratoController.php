@@ -16,7 +16,7 @@ class PratoController extends BaseController{
 
 		Session::put('flag',10);
 		
-		 return View::make("cardapio.pratos.pratos");
+		return View::make("cardapio.pratos.pratos");
 	}
 	/*******************************************
 	*  Ação que retorna a View de Cadastro para 
@@ -235,15 +235,13 @@ class PratoController extends BaseController{
 
 		$antiga_foto = $dados["antiga_foto"];
 		unset($dados["antiga_foto"]);
+
 		if($file != null)
 		{
-			if(file_exists($antiga_foto)) return 0;
-
-			if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-			    //deletar a foto antiga no Windows
-				unlink($antiga_foto);
-			}
-
+			
+			if($antiga_foto != null && file_exists(app_path()."/".substr($antiga_foto, 9)))
+				unlink(app_path()."/".substr($antiga_foto, 9));
+			
 			// salva a foto
 			$extension = $file->getClientOriginalExtension();
 

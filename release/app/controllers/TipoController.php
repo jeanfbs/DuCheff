@@ -168,12 +168,9 @@ class TipoController extends BaseController{
 		unset($dados["antiga_foto"]);
 		if($file != null)
 		{
-			if(file_exists($antiga_foto)) return 0;
-
-			if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-			    //deletar a foto antiga no Windows
-				unlink($antiga_foto);
-			}
+			//deletar a foto antiga
+			if($antiga_foto != null && file_exists(app_path()."/".substr($antiga_foto, 9)))
+				unlink(app_path()."/".substr($antiga_foto, 9));
 
 			// salva a foto
 			$extension = $file->getClientOriginalExtension();

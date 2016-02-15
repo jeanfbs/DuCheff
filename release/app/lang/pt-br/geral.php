@@ -270,6 +270,8 @@ return array(
 	'msg_user_inexistente' => 'Usuario não encontrado!',
 	'acesso_negado' => 'Acesso Negado!',
 	'msg_cadastro_sucesso' => 'Os dados foram cadastrados com sucesso!',
+	'msg_atualizar_sucesso' => 'Os dados foram atualizados com sucesso!',
+	'msg_erro_atualizacao' => 'Nenhuma modificação foi realizada!',
 	'msg_erro' => 'Erro na operação, tente de novo!',
 	'msg_erro_variedades' => 'Erro nenhuma variedade encontrada',
 	'msg_ja_existe' => 'Esse úsuario já existe!',

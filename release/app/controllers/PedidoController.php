@@ -11,16 +11,15 @@
 class PedidoController extends BaseController{
 
 
-
 	public function getIndex(){
 
 		Session::put('flag',11);
 		
 		$dados["status_notificacao"] = 2;
 		$result = DB::table('pedidos')
-		->where("status",1)
+		->where("status_notificacao",1)
         ->update($dados);
-        
+
 		return View::make("pedidos.pedidos");
 	}
 	/*******************************************

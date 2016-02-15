@@ -44,6 +44,7 @@ class AndroidController extends BaseController{
 	            $response['login'] = $cliente->login;
 	            $response['nome'] = $cliente->nome;
 	            $response['endereco'] = $cliente->endereco;
+	            $response['cidade'] = $cliente->cidade;
 	            $response['telefone'] = $cliente->telefone;
 	            $response['email'] = $cliente->email;
 	           
@@ -126,10 +127,13 @@ class AndroidController extends BaseController{
 	        return json_encode($response);
 		}
 
-		$bebidas = BebidasModel::
-		where("deletada","<>",1)
-		->orderBy("nome","asc")
-		->get();
+		$bebidas = DB::select("SELECT bebidas.cod, bebidas.nome, bebidas.valor, 
+		bebidas.foto_url,sum(estoque_bebidas.qtd_atual) total_estoque
+		FROM `estoque_bebidas` inner join bebidas 
+		on bebidas.cod = estoque_bebidas.cod_bebida
+		where bebidas.deletada <> 1 and estoque_bebidas.qtd_atual > 0
+		group by estoque_bebidas.cod_bebida
+		order by bebidas.nome");
 
 		$response = array();
 		if(count($bebidas) == 0)
@@ -399,6 +403,7 @@ class AndroidController extends BaseController{
 		        $response['message'] = Lang::get('geral.msg_erro');
 		        return json_encode($response);
 			}
+
 		}
 
 		// cadastro dos pratos adicionados no pedido
@@ -674,6 +679,57 @@ class AndroidController extends BaseController{
 		{
 			$response['error'] = true;
 			$response['message'] = Lang::get('geral.msg_erro');
+		}
+
+		return json_encode($response);
+		
+	}
+
+	/*******************************************
+	*  Envia a atualização do perfil do cliente
+	********************************************/
+	public function postPerfil()
+	{
+		$json_cliente = Input::get("json_usuario");
+		$json_cliente = json_decode($json_cliente);
+		$appid = Input::get('appid');
+		
+		$response = array();
+
+		if(!isset($appid) || $this->appid != intval($appid))
+		{
+			
+			$response['error'] = true;
+	        $response['message'] = Lang::get('geral.acesso_negado');
+	        return json_encode($response);
+
+		}
+
+		$codigo = $json_cliente->codigo;
+		$dados = array();
+
+		if(isset($json_cliente->senha) && $json_cliente->senha != "")
+			$dados["senha"] = sha1($json_cliente->senha);
+
+		$dados["login"] = $json_cliente->login;
+		$dados["nome"] = $json_cliente->nome;
+		$dados["endereco"] = $json_cliente->endereco;
+		$dados["cidade"] = $json_cliente->cidade;
+		$dados["telefone"] = $json_cliente->telefone;
+		$dados["email"] = $json_cliente->email;
+
+		$result = DB::table('clientes')
+        ->where('cod', $codigo)
+        ->update($dados);
+        if($result)
+        {
+	        $response['error'] = false;
+		    $response['message'] = Lang::get('geral.msg_atualizar_sucesso');
+		}
+		else
+		{
+			$response['error'] = true;
+			$response['message'] = Lang::get('geral.msg_erro_atualizacao');
 		}
 
 		return json_encode($response);

@@ -258,8 +258,7 @@ $(document).ready(function(){
 
   $.ajax({
         type: "GET",
-        url : pt_br.absolute_url+"/panel-control/mensagens/novoscomentarios",
-        data : {d:0}
+        url : pt_br.absolute_url+"/panel-control/mensagens/novoscomentarios"
     }).done(function(quantidade){
       if(quantidade != 0)
       $("#qtd_comentarios").text(quantidade);
@@ -270,8 +269,7 @@ $(document).ready(function(){
 
     $.ajax({
         type: "GET",
-        url : pt_br.absolute_url+"/panel-control/pedidos/novospedidos",
-        data : {d:0}
+        url : pt_br.absolute_url+"/panel-control/pedidos/novospedidos"
     }).done(function(quantidade){
       if(quantidade != 0)
       $("#qtd_pedidos").text(quantidade);
@@ -283,8 +281,7 @@ $(document).ready(function(){
   setInterval(function(){
     $.ajax({
         type: "GET",
-        url : pt_br.absolute_url+"/panel-control/mensagens/novoscomentarios",
-        data : {d:0}
+        url : pt_br.absolute_url+"/panel-control/mensagens/novoscomentarios"
     }).done(function(quantidade){
       if(quantidade != 0)
       $("#qtd_comentarios").text(quantidade);
@@ -299,7 +296,6 @@ $(document).ready(function(){
     $.ajax({
         type: "GET",
         url : pt_br.absolute_url+"/panel-control/pedidos/novospedidos",
-        data : {d:0}
     }).done(function(quantidade){
       if(quantidade != 0)
       $("#qtd_pedidos").text(quantidade);

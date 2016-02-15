@@ -171,12 +171,8 @@ class BebidaController extends BaseController{
 		unset($dados["antiga_foto"]);
 		if($file != null)
 		{
-			if(file_exists($antiga_foto)) return 0;
-
-			if (strtoupper(substr(PHP_OS, 0, 3)) === 'LIN') {
-			    //deletar a foto antiga no Windows
-				unlink($antiga_foto);
-			}
+			if($antiga_foto != null && file_exists(app_path()."/".substr($antiga_foto, 9)))
+				unlink(app_path()."/".substr($antiga_foto, 9));
 
 			// salva a foto da bebida
 			$extension = $file->getClientOriginalExtension();
