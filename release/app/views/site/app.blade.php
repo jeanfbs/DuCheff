@@ -18,7 +18,7 @@
 			  <p>O Macarrão Du Cheff agora está de cara nova, você pode fazer seus pedidos online
 			  	pelo aplicativo, e acompanhar todo o processo de seu pedido, até a entrega.
 			  	Você também pode salvar suas preferências.</p>
-			  <p><a  href="{{url('ducheff.apk')}}" download="ducheff.apk"><h2 class="text-primary text-center"><i class="fa fa-download"></i> Download App</h2></a></p>
+			  <p><a  href="{{url('apk/app-release.apk')}}" download="ducheff.apk"><h2 class="text-primary text-center"><i class="fa fa-download"></i> Download App</h2></a></p>
 			</div>
     	</div>
     </div>
