@@ -46,10 +46,13 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
+                        <a href="{{url('/')}}">Home</a>
+                    </li>
+                    <li>
                         <a href="{{url('cardapio')}}">Cardápio</a>
                     </li>
                     <li>
-                        <a href="{{url('download-app')}}">Pedidos Online</a>
+                        <a href="{{url('download-app')}}">Download App</a>
                     </li>
                     <li>
                         <a href="{{url('contato')}}">Contato</a>
