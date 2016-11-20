@@ -82,8 +82,9 @@
     <div class="row">
       <!-- Divisão da Logomarca -->
       <div id="logo" class="col-xs-12 col-sm-2">
-        <img class="pull-left" src="{{url('/img/logo.png')}}" alt="Logo DuCheff" width="40">
-        <a href="{{url('/panel-control/dashboard')}}">DuCheff</a>
+	<a href="{{url('/panel-control/dashboard')}}">
+            <img class="pull-left" src="{{url('/img/logo.png')}}" alt="Logo DuCheff" width="80%">
+	</a>
       </div>
       <div id="top-panel" class="col-xs-12 col-sm-10">
         <div class="row">

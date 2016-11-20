@@ -39,8 +39,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <img class="pull-left" src="{{url('/img/logo.png')}}" alt="Logo DuCheff" width="40">
-                <a class="navbar-brand" href="{{url('/')}}">DuCheff</a>
+                <img class="pull-left" src="{{url('/img/logo.png')}}" alt="Logo DuCheff" width="60%">
+                <!-- <a class="navbar-brand" href="{{url('/')}}">DuCheff</a> -->
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -48,11 +48,11 @@
                     <li>
                         <a href="{{url('/')}}">Home</a>
                     </li>
-                    <li>
+		    <li>
                         <a href="{{url('cardapio')}}">Cardápio</a>
                     </li>
                     <li>
-                        <a href="{{url('download-app')}}">Download App</a>
+			<a href="{{url('download-app')}}">Download App</a>
                     </li>
                     <li>
                         <a href="{{url('contato')}}">Contato</a>
